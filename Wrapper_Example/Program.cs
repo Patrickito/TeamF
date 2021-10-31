@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Threading;
 
 namespace Wrapper_Example
 {
@@ -33,7 +31,7 @@ namespace Wrapper_Example
 
 							var Width = item.getWidth();
 							var Height = item.getHeight();
-							//Bitmap bitmap = new Bitmap((int)Width, (int)Height);
+							Bitmap bitmap = new Bitmap((int)Width, (int)Height);
 							for (ulong i = 0; i < Width; i++)
 							{
 								for (ulong j = 0; j < Height; j++)
@@ -41,11 +39,11 @@ namespace Wrapper_Example
 									using (var p = item.getPixelAt(i, j))
 									{
 										Color color = Color.FromArgb(p.r, p.g, p.b);
-										//bitmap.SetPixel((int)i, (int)j, color);
+										bitmap.SetPixel((int)i, (int)j, color);
 									}
 								}
 							}
-							//bitmap.Save("_caffTest" + cnt + ".jpg", ImageFormat.Jpeg);
+							bitmap.Save("_caffTest" + cnt + ".jpg", ImageFormat.Jpeg);
 							cnt++;
 						}
 
