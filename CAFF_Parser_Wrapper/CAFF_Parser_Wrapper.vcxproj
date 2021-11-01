@@ -72,11 +72,12 @@
       <AdditionalDependencies>..\CAFF_Parser\Debug\CAFF_Parser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>swig -c++ -csharp -namespace Wrapper_Example -outfile Caff_Parser_Wrapper.cs -outdir ..\Wrapper_Example Caff_Parser_Wrapper.i</Command>
+      <Command>swig -c++ -csharp -namespace TeamF_Api -outfile Caff_Parser_Wrapper.cs -outdir ..\TeamF_Api Caff_Parser_Wrapper.i</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)Wrapper_Example\bin\x64\Debug\netcoreapp3.1" /s /i /y 
-xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)TeamF_tests\bin\x64\Debug\netcoreapp3.1" /s /i /y </Command>
+xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)TeamF_tests\bin\x64\Debug\netcoreapp3.1" /s /i /y 
+xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)TeamF_Api\bin\x64\Debug\netcoreapp3.1" /s /i /y </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

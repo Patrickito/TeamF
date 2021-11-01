@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <Platforms>x64</Platforms>
+    <Platforms>x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wrapper_Example\Wrapper_Example.csproj" />
+    <ProjectReference Include="..\TeamF_Api\TeamF_Api.csproj" />
   </ItemGroup>
 
 </Project>

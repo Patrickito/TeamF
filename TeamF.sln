@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapper_Example", "Wrapper_Example\Wrapper_Example.csproj", "{18269877-57D5-4237-8D75-B326A041BDCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wrapper_Example", "Wrapper_Example\Wrapper_Example.csproj", "{18269877-57D5-4237-8D75-B326A041BDCF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0AF2C5EC-5ACB-47F6-B308-D33B97CD3BDB} = {0AF2C5EC-5ACB-47F6-B308-D33B97CD3BDB}
 	EndProjectSection
@@ -16,6 +16,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CAFF_Parser_Wrapper", "CAFF
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamF_tests", "TeamF_tests\TeamF_tests.csproj", "{BBE8C225-6A32-41BD-8AAF-6513A81ED4A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamF_Api", "TeamF_Api\TeamF_Api.csproj", "{C5476C91-7CC7-45FE-879C-C8E6F3D7366D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0AF2C5EC-5ACB-47F6-B308-D33B97CD3BDB} = {0AF2C5EC-5ACB-47F6-B308-D33B97CD3BDB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +44,10 @@ Global
 		{BBE8C225-6A32-41BD-8AAF-6513A81ED4A2}.Debug|x64.Build.0 = Debug|x64
 		{BBE8C225-6A32-41BD-8AAF-6513A81ED4A2}.Release|x64.ActiveCfg = Release|x64
 		{BBE8C225-6A32-41BD-8AAF-6513A81ED4A2}.Release|x64.Build.0 = Release|x64
+		{C5476C91-7CC7-45FE-879C-C8E6F3D7366D}.Debug|x64.ActiveCfg = Debug|x64
+		{C5476C91-7CC7-45FE-879C-C8E6F3D7366D}.Debug|x64.Build.0 = Debug|x64
+		{C5476C91-7CC7-45FE-879C-C8E6F3D7366D}.Release|x64.ActiveCfg = Release|x64
+		{C5476C91-7CC7-45FE-879C-C8E6F3D7366D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

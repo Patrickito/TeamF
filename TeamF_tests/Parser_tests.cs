@@ -4,193 +4,192 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wrapper_Example;
-using static Wrapper_Example.Caff;
-
-
+using TeamF_Api;
+using static TeamF_Api.Caff;
 
 namespace Parser_Tests
 {
-	[TestClass]
-	public class Function_Unit_Tests
-	{
-		Parser parser = new Parser();
-		string pathBase = "../../../../../CAFF_Parser/testFiles/";
+    [TestClass]
+    public class Function_Unit_Tests
+    {
+        Parser parser = new Parser();
+        string pathBase = "../../../../../CAFF_Parser/testFiles/";
 
-		[TestMethod]
-		public void Caff_getAnimationNumber()
-		{
-			ulong expected = 2;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath)) {
-				var actual = caff.getAnimationNumber();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getAnimationNumber()
+        {
+            ulong expected = 2;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getAnimationNumber();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getYear()
-		{
-			ushort expected = 2020;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = caff.getYear();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getYear()
+        {
+            ushort expected = 2020;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getYear();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getMonth()
-		{
-			byte expected = 7;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = caff.getMonth();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getMonth()
+        {
+            byte expected = 7;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getMonth();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getDay()
-		{
-			byte expected = 2;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = caff.getDay();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getDay()
+        {
+            byte expected = 2;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getDay();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getHour()
-		{
-			byte expected = 14;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = caff.getHour();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getHour()
+        {
+            byte expected = 14;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getHour();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getMinute()
-		{
-			byte expected = 50;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = caff.getMinute();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getMinute()
+        {
+            byte expected = 50;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = caff.getMinute();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Caff_getCreator()
-		{
-			string expected = "Test Creator";
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var actual = string.Join("", caff.getCreator());
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Caff_getCreator()
+        {
+            string expected = "Test Creator";
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var actual = string.Join("", caff.getCreator());
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getWidth()
-		{
-			ulong expected = 1000;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = ciff.getWidth();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Ciff_getWidth()
+        {
+            ulong expected = 1000;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = ciff.getWidth();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getHeight()
-		{
-			ulong expected = 667;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = ciff.getHeight();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Ciff_getHeight()
+        {
+            ulong expected = 667;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = ciff.getHeight();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getCaption()
-		{
-			string expected = "Beautiful scenery";
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = string.Join("", ciff.getCaption());
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Ciff_getCaption()
+        {
+            string expected = "Beautiful scenery";
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = string.Join("", ciff.getCaption());
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getTags()
-		{
-			string[] expected = { "landscape", "sunset", "mountains" };
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = string.Join("", ciff.getTags()).Split('\0')[..^1];
-				CollectionAssert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Ciff_getTags()
+        {
+            string[] expected = { "landscape", "sunset", "mountains" };
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = string.Join("", ciff.getTags()).Split('\0')[..^1];
+                CollectionAssert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getDuration()
-		{
-			ulong expected = 1000;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = ciff.getDuration();
-				Assert.AreEqual(expected, actual);
-			}
-		}
+        [TestMethod]
+        public void Ciff_getDuration()
+        {
+            ulong expected = 1000;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = ciff.getDuration();
+                Assert.AreEqual(expected, actual);
+            }
+        }
 
-		[TestMethod]
-		public void Ciff_getPixelAt()
-		{
-			Pixel expected = new Pixel();
-			expected.r = 45;
-			expected.g = 52;
-			expected.b = 60;
-			string filepath = pathBase + "1.caff";
-			using (var caff = parser.parseCaff(filepath))
-			{
-				var ciff = caff.getCaffAnimation(0);
-				var actual = ciff.getPixelAt(0,0);
-				Assert.AreEqual(expected.r, actual.r);
-				Assert.AreEqual(expected.g, actual.g);
-				Assert.AreEqual(expected.b, actual.b);
-			}
-		}
-	}
+        [TestMethod]
+        public void Ciff_getPixelAt()
+        {
+            Pixel expected = new Pixel();
+            expected.r = 45;
+            expected.g = 52;
+            expected.b = 60;
+            string filepath = pathBase + "1.caff";
+            using (var caff = parser.parseCaff(filepath))
+            {
+                var ciff = caff.getCaffAnimation(0);
+                var actual = ciff.getPixelAt(0, 0);
+                Assert.AreEqual(expected.r, actual.r);
+                Assert.AreEqual(expected.g, actual.g);
+                Assert.AreEqual(expected.b, actual.b);
+            }
+        }
+    }
 
-	[TestClass]
+    [TestClass]
     public class Exception_Unit_Tests
     {
         Parser parser = new Parser();
-		string pathBase = "../../../../../CAFF_Parser/testFiles/";
+        string pathBase = "../../../../../CAFF_Parser/testFiles/";
 
-		[TestMethod]
+        [TestMethod]
         public void Test_Invalid_Extension_Exception()
         {
             string filepath = pathBase + "dummy.cafff";

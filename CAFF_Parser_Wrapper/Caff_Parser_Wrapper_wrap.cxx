@@ -983,7 +983,7 @@ void SwigDirector_Caff::swig_init_callbacks() {
 extern "C" {
 #endif
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Clear(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_Clear(void * jarg1) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   
   arg1 = (std::vector< char > *)jarg1; 
@@ -991,7 +991,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Clear(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Add(void * jarg1, char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_Add(void * jarg1, char jarg2) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   char *arg2 = 0 ;
   char temp2 ;
@@ -1003,7 +1003,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Add(void * jarg1, 
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_Wrapper_Example_CharVector_size(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_TeamF_Api_CharVector_size(void * jarg1) {
   unsigned long jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   std::vector< char >::size_type result;
@@ -1015,7 +1015,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_Wrapper_Example_CharVector_size(void
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_Wrapper_Example_CharVector_capacity(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_TeamF_Api_CharVector_capacity(void * jarg1) {
   unsigned long jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   std::vector< char >::size_type result;
@@ -1027,7 +1027,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_Wrapper_Example_CharVector_capacity(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_reserve(void * jarg1, unsigned long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_reserve(void * jarg1, unsigned long jarg2) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   std::vector< char >::size_type arg2 ;
   
@@ -1037,7 +1037,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_reserve(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_0() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_CharVector__SWIG_0() {
   void * jresult ;
   std::vector< char > *result = 0 ;
   
@@ -1047,7 +1047,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_0() {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_1(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_CharVector__SWIG_1(void * jarg1) {
   void * jresult ;
   std::vector< char > *arg1 = 0 ;
   std::vector< char > *result = 0 ;
@@ -1063,7 +1063,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_1(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_2(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_CharVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
   std::vector< char > *result = 0 ;
@@ -1080,7 +1080,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_CharVector__SWIG_2(int 
 }
 
 
-SWIGEXPORT char SWIGSTDCALL CSharp_Wrapper_Example_CharVector_getitemcopy(void * jarg1, int jarg2) {
+SWIGEXPORT char SWIGSTDCALL CSharp_TeamF_Api_CharVector_getitemcopy(void * jarg1, int jarg2) {
   char jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
@@ -1099,7 +1099,7 @@ SWIGEXPORT char SWIGSTDCALL CSharp_Wrapper_Example_CharVector_getitemcopy(void *
 }
 
 
-SWIGEXPORT char SWIGSTDCALL CSharp_Wrapper_Example_CharVector_getitem(void * jarg1, int jarg2) {
+SWIGEXPORT char SWIGSTDCALL CSharp_TeamF_Api_CharVector_getitem(void * jarg1, int jarg2) {
   char jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
@@ -1118,7 +1118,7 @@ SWIGEXPORT char SWIGSTDCALL CSharp_Wrapper_Example_CharVector_getitem(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_setitem(void * jarg1, int jarg2, char jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_setitem(void * jarg1, int jarg2, char jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   char *arg3 = 0 ;
@@ -1137,7 +1137,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_setitem(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_AddRange(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_AddRange(void * jarg1, void * jarg2) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   std::vector< char > *arg2 = 0 ;
   
@@ -1151,7 +1151,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_AddRange(void * ja
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_CharVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_CharVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
@@ -1175,7 +1175,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_CharVector_GetRange(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Insert(void * jarg1, int jarg2, char jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_Insert(void * jarg1, int jarg2, char jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   char *arg3 = 0 ;
@@ -1194,7 +1194,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Insert(void * jarg
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   std::vector< char > *arg3 = 0 ;
@@ -1215,7 +1215,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_InsertRange(void *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_RemoveAt(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_RemoveAt(void * jarg1, int jarg2) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   
@@ -1230,7 +1230,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_RemoveAt(void * ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -1250,7 +1250,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_RemoveRange(void *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Repeat(char jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_CharVector_Repeat(char jarg1, int jarg2) {
   void * jresult ;
   char *arg1 = 0 ;
   int arg2 ;
@@ -1271,7 +1271,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Repeat(char jarg
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Reverse__SWIG_0(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_Reverse__SWIG_0(void * jarg1) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   
   arg1 = (std::vector< char > *)jarg1; 
@@ -1279,7 +1279,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Reverse__SWIG_0(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -1299,7 +1299,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Reverse__SWIG_1(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_CharVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   int arg2 ;
   std::vector< char > *arg3 = 0 ;
@@ -1320,7 +1320,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_CharVector_SetRange(void * ja
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Contains(void * jarg1, char jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_TeamF_Api_CharVector_Contains(void * jarg1, char jarg2) {
   unsigned int jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   char *arg2 = 0 ;
@@ -1336,7 +1336,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Contains(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_IndexOf(void * jarg1, char jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_TeamF_Api_CharVector_IndexOf(void * jarg1, char jarg2) {
   int jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   char *arg2 = 0 ;
@@ -1352,7 +1352,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_IndexOf(void * jarg
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_LastIndexOf(void * jarg1, char jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_TeamF_Api_CharVector_LastIndexOf(void * jarg1, char jarg2) {
   int jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   char *arg2 = 0 ;
@@ -1368,7 +1368,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_LastIndexOf(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Remove(void * jarg1, char jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_TeamF_Api_CharVector_Remove(void * jarg1, char jarg2) {
   unsigned int jresult ;
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   char *arg2 = 0 ;
@@ -1384,7 +1384,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Wrapper_Example_CharVector_Remove(voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_CharVector(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_delete_CharVector(void * jarg1) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   
   arg1 = (std::vector< char > *)jarg1; 
@@ -1392,7 +1392,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_CharVector(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Parser_parseCaff(void * jarg1, char * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Parser_parseCaff(void * jarg1, char * jarg2) {
   void * jresult ;
   Parser *arg1 = (Parser *) 0 ;
   std::string arg2 ;
@@ -1471,7 +1471,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Parser_parseCaff(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Parser_parseCaffSwigExplicitParser(void * jarg1, char * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Parser_parseCaffSwigExplicitParser(void * jarg1, char * jarg2) {
   void * jresult ;
   Parser *arg1 = (Parser *) 0 ;
   std::string arg2 ;
@@ -1550,7 +1550,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Parser_parseCaffSwigExplici
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Parser(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_delete_Parser(void * jarg1) {
   Parser *arg1 = (Parser *) 0 ;
   
   arg1 = (Parser *)jarg1; 
@@ -1558,7 +1558,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Parser(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Parser() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_Parser() {
   void * jresult ;
   Parser *result = 0 ;
   
@@ -1568,14 +1568,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Parser() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Parser_director_connect(void *objarg, SwigDirector_Parser::SWIG_Callback0_t callback0) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_Parser_director_connect(void *objarg, SwigDirector_Parser::SWIG_Callback0_t callback0) {
   Parser *obj = (Parser *)objarg;
   SwigDirector_Parser *director = static_cast<SwigDirector_Parser *>(obj);
   director->swig_connect_director(callback0);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_r_set(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_r_set(void * jarg1, unsigned char jarg2) {
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char arg2 ;
   
@@ -1585,7 +1585,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_r_set(void * jarg1
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_r_get(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_r_get(void * jarg1) {
   unsigned char jresult ;
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char result;
@@ -1597,7 +1597,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_r_get(voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_g_set(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_g_set(void * jarg1, unsigned char jarg2) {
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char arg2 ;
   
@@ -1607,7 +1607,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_g_set(void * jarg1
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_g_get(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_g_get(void * jarg1) {
   unsigned char jresult ;
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char result;
@@ -1619,7 +1619,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_g_get(voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_b_set(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_b_set(void * jarg1, unsigned char jarg2) {
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char arg2 ;
   
@@ -1629,7 +1629,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_b_set(void * jarg1
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_b_get(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_Pixel_b_get(void * jarg1) {
   unsigned char jresult ;
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   unsigned char result;
@@ -1641,7 +1641,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_Pixel_b_get(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff_Pixel() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_Caff_Pixel() {
   void * jresult ;
   Caff::Pixel *result = 0 ;
   
@@ -1651,7 +1651,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff_Pixel() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff_Pixel(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_delete_Caff_Pixel(void * jarg1) {
   Caff::Pixel *arg1 = (Caff::Pixel *) 0 ;
   
   arg1 = (Caff::Pixel *)jarg1; 
@@ -1659,7 +1659,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff_Pixel(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff_Ciff(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_Caff_Ciff(void * jarg1) {
   void * jresult ;
   std::shared_ptr< CaffAnimation > arg1 ;
   std::shared_ptr< CaffAnimation > *argp1 ;
@@ -1677,7 +1677,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff_Ciff(void * jarg1)
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getWidth(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getWidth(void * jarg1) {
   unsigned long long jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   unsigned __int64 result;
@@ -1689,7 +1689,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getWi
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getHeight(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getHeight(void * jarg1) {
   unsigned long long jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   unsigned __int64 result;
@@ -1701,7 +1701,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getHe
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getCaption(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getCaption(void * jarg1) {
   void * jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   std::vector< char > result;
@@ -1713,7 +1713,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getCaption(void *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getTags(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getTags(void * jarg1) {
   void * jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   std::vector< char > result;
@@ -1725,7 +1725,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getTags(void * ja
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getDuration(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getDuration(void * jarg1) {
   unsigned long long jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   unsigned __int64 result;
@@ -1737,7 +1737,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getDu
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getPixelAt(void * jarg1, unsigned long long jarg2, unsigned long long jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_Ciff_getPixelAt(void * jarg1, unsigned long long jarg2, unsigned long long jarg3) {
   void * jresult ;
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   unsigned __int64 arg2 ;
@@ -1753,7 +1753,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_Ciff_getPixelAt(void *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff_Ciff(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_delete_Caff_Ciff(void * jarg1) {
   Caff::Ciff *arg1 = (Caff::Ciff *) 0 ;
   
   arg1 = (Caff::Ciff *)jarg1; 
@@ -1761,7 +1761,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff_Ciff(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_new_Caff(void * jarg1) {
   void * jresult ;
   std::shared_ptr< CaffNative > arg1 ;
   std::shared_ptr< CaffNative > *argp1 ;
@@ -1779,7 +1779,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_new_Caff(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_delete_Caff(void * jarg1) {
   Caff *arg1 = (Caff *) 0 ;
   
   arg1 = (Caff *)jarg1; 
@@ -1787,7 +1787,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_delete_Caff(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_getAnimationNumber(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_TeamF_Api_Caff_getAnimationNumber(void * jarg1) {
   unsigned long long jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int64 result;
@@ -1799,7 +1799,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_getAnimati
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_getAnimationNumberSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_TeamF_Api_Caff_getAnimationNumberSwigExplicitCaff(void * jarg1) {
   unsigned long long jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int64 result;
@@ -1811,7 +1811,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_Wrapper_Example_Caff_getAnimati
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_Wrapper_Example_Caff_getYear(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_TeamF_Api_Caff_getYear(void * jarg1) {
   unsigned short jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int16 result;
@@ -1823,7 +1823,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_Wrapper_Example_Caff_getYear(void *
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_Wrapper_Example_Caff_getYearSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_TeamF_Api_Caff_getYearSwigExplicitCaff(void * jarg1) {
   unsigned short jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int16 result;
@@ -1835,7 +1835,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_Wrapper_Example_Caff_getYearSwigExp
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMonth(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getMonth(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1847,7 +1847,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMonth(void *
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMonthSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getMonthSwigExplicitCaff(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1859,7 +1859,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMonthSwigExp
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getDay(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getDay(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1871,7 +1871,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getDay(void * j
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getDaySwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getDaySwigExplicitCaff(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1883,7 +1883,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getDaySwigExpli
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getHour(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getHour(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1895,7 +1895,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getHour(void * 
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getHourSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getHourSwigExplicitCaff(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1907,7 +1907,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getHourSwigExpl
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMinute(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getMinute(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1919,7 +1919,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMinute(void 
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMinuteSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_TeamF_Api_Caff_getMinuteSwigExplicitCaff(void * jarg1) {
   unsigned char jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned __int8 result;
@@ -1931,7 +1931,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_Wrapper_Example_Caff_getMinuteSwigEx
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCreator(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_getCreator(void * jarg1) {
   void * jresult ;
   Caff *arg1 = (Caff *) 0 ;
   std::vector< char > result;
@@ -1943,7 +1943,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCreator(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCreatorSwigExplicitCaff(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_getCreatorSwigExplicitCaff(void * jarg1) {
   void * jresult ;
   Caff *arg1 = (Caff *) 0 ;
   std::vector< char > result;
@@ -1955,7 +1955,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCreatorSwigExplicit
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCaffAnimation(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_getCaffAnimation(void * jarg1, unsigned int jarg2) {
   void * jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned int arg2 ;
@@ -1969,7 +1969,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCaffAnimation(void 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCaffAnimationSwigExplicitCaff(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Caff_getCaffAnimationSwigExplicitCaff(void * jarg1, unsigned int jarg2) {
   void * jresult ;
   Caff *arg1 = (Caff *) 0 ;
   unsigned int arg2 ;
@@ -1983,7 +1983,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Wrapper_Example_Caff_getCaffAnimationSwigEx
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_Wrapper_Example_Caff_director_connect(void *objarg, SwigDirector_Caff::SWIG_Callback0_t callback0, SwigDirector_Caff::SWIG_Callback1_t callback1, SwigDirector_Caff::SWIG_Callback2_t callback2, SwigDirector_Caff::SWIG_Callback3_t callback3, SwigDirector_Caff::SWIG_Callback4_t callback4, SwigDirector_Caff::SWIG_Callback5_t callback5, SwigDirector_Caff::SWIG_Callback6_t callback6, SwigDirector_Caff::SWIG_Callback7_t callback7) {
+SWIGEXPORT void SWIGSTDCALL CSharp_TeamF_Api_Caff_director_connect(void *objarg, SwigDirector_Caff::SWIG_Callback0_t callback0, SwigDirector_Caff::SWIG_Callback1_t callback1, SwigDirector_Caff::SWIG_Callback2_t callback2, SwigDirector_Caff::SWIG_Callback3_t callback3, SwigDirector_Caff::SWIG_Callback4_t callback4, SwigDirector_Caff::SWIG_Callback5_t callback5, SwigDirector_Caff::SWIG_Callback6_t callback6, SwigDirector_Caff::SWIG_Callback7_t callback7) {
   Caff *obj = (Caff *)objarg;
   SwigDirector_Caff *director = static_cast<SwigDirector_Caff *>(obj);
   director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6, callback7);
