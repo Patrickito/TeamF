@@ -8,7 +8,9 @@ namespace TeamF_Api.Services.Interfaces
 {
     public interface IUserService
     {
-        Task RegisterUser(User user);
+        Task RegisterUser(string userName, string password);
+
+        Task<string> Login(string userName, string password);
 
         Task<User> FindUserByName(string name);
 
