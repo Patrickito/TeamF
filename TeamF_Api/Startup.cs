@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeamF_Api.DAL;
+using TeamF_Api.Security.PasswordEncoders;
 using TeamF_Api.Services.Implementations;
 using TeamF_Api.Services.Interfaces;
 
@@ -32,6 +33,7 @@ namespace TeamF_Api
             services.AddControllers();
 
             services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IPasswordEncoder, BcryptPasswordEncoder>();
 
             services.AddDbContext<CAFFShopDbContext>(
                 options => options
