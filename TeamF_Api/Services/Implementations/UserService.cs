@@ -7,6 +7,7 @@ using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
 using TeamF_Api.Security;
 using TeamF_Api.Security.PasswordEncoders;
+using TeamF_Api.Security.Token;
 using TeamF_Api.Services.Exceptions;
 using TeamF_Api.Services.Interfaces;
 
@@ -16,11 +17,13 @@ namespace TeamF_Api.Services.Implementations
     {
         private readonly CAFFShopDbContext _context;
         private readonly IPasswordEncoder _encoder;
+        private readonly ITokenGenerator _tokenGenerator;
 
-        public UserService(CAFFShopDbContext context, IPasswordEncoder encoder)
+        public UserService(CAFFShopDbContext context, IPasswordEncoder encoder, ITokenGenerator tokenGenerator)
         {
             _context = context;
             _encoder = encoder;
+            _tokenGenerator = tokenGenerator;
         }
 
         public async Task DeleteUser(long id)
@@ -36,9 +39,9 @@ namespace TeamF_Api.Services.Implementations
             return await _context.Users.Where(u => u.Name.Equals(name)).FirstOrDefaultAsync();
         }
 
-        public Task<string> Login(string userName, string password)
+        public async Task<string> Login(string userName, string password)
         {
-            throw new NotImplementedException();
+            return _tokenGenerator.GenerateToken(userName, password);
         }
 
         public async Task RegisterUser(string userName, string password)
