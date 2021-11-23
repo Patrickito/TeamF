@@ -13,11 +13,12 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TeamF_Api.DAL;
+using TeamF_Api.DAL.Entity;
 using TeamF_Api.Security;
-using TeamF_Api.Security.PasswordEncoders;
 using TeamF_Api.Security.Token;
 using TeamF_Api.Services.Implementations;
 using TeamF_Api.Services.Interfaces;
@@ -44,41 +45,53 @@ namespace TeamF_Api
                     .UseSqlServer(Configuration.GetConnectionString("SQLServer"))
             ); ;
 
-            services.Configure<SecurityConfiguration>(Configuration.GetSection("Security"));
-            services.AddAuthentication(options =>
+            services.AddIdentityCore<User>(o =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.Password.RequireDigit = false;
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequireUppercase = false;
+                o.Password.RequiredLength = 0;
+                o.User.RequireUniqueEmail = false;
+            }).AddEntityFrameworkStores<CAFFShopDbContext>();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-                .AddJwtBearer(jwtBearerOptions =>
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    jwtBearerOptions.SaveToken = true;
-                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("Security").GetSection("Secret").Value)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ClockSkew = TimeSpan.FromMinutes(5)
-                    };
-                });
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("Security").GetSection("Secret").Value)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
             services.AddAuthorization(options =>
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder()
-                    .RequireClaim(SecurityConstants.RoleClaim, SecurityConstants.BaseUserRole)
-                    .RequireClaim(SecurityConstants.UserNameClaim)
+                    .RequireClaim(ClaimTypes.Role, SecurityConstants.BaseUserRole)
+                    .RequireClaim(ClaimTypes.Name)
                     .Build();
                 options.AddPolicy(SecurityConstants.AdminPolicy, policy => policy
-                    .RequireClaim(SecurityConstants.RoleClaim, SecurityConstants.BaseUserRole)
-                    .RequireClaim(SecurityConstants.RoleClaim, SecurityConstants.AdminRole)
-                    .RequireClaim(SecurityConstants.UserNameClaim)
+                    .RequireClaim(ClaimTypes.Role, SecurityConstants.BaseUserRole)
+                    .RequireClaim(ClaimTypes.Role, SecurityConstants.AdminRole)
+                    .RequireClaim(ClaimTypes.Name)
                 );
             });
 
+
+
+            services.Configure<SecurityConfiguration>(Configuration.GetSection("Security"));
+
             services.AddScoped<IUserService, UserService>();
-            services.AddTransient<IPasswordEncoder, BcryptPasswordEncoder>();
             services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
         }
 
@@ -94,6 +107,7 @@ namespace TeamF_Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

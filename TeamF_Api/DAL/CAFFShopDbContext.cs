@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using TeamF_Api.DAL.Entity;
 
 namespace TeamF_Api.DAL
 {
-    public class CAFFShopDbContext : DbContext
+    public class CAFFShopDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         public CAFFShopDbContext(DbContextOptions options) : base(options)
         {
@@ -17,8 +19,9 @@ namespace TeamF_Api.DAL
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(u => u.Name)
-                    .IsUnique();
+                entity.HasKey(u => u.Id);
+
+                entity.HasIndex(u => u.UserName).IsUnique();
 
                 entity.HasMany(u => u.Roles)
                     .WithMany(r => r.Users)
@@ -27,13 +30,14 @@ namespace TeamF_Api.DAL
 
             modelBuilder.Entity<Role>(entity =>
             {
+
                 entity.HasData(
                     new Role { Id = 1, Name = "BaseUser" },
                     new Role { Id = 2, Name = "Administrator" });
             });
-        }
 
-        public DbSet<User> Users { get; set; }
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Role> Roles { get; set; }
     }
 }

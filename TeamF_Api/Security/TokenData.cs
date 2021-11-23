@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace TeamF_Api.Security
 {
-    public class SecurityConfiguration
+    public class TokenData
     {
-        public string Secret { get; set; }
-        public int TokenExpirationInMinutes { get; set; }
+        public string UserName { get; set; }
+
+        public ICollection<string> Roles { get; set; }
     }
 }

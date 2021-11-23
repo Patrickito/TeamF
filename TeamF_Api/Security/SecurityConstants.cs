@@ -7,12 +7,9 @@ namespace TeamF_Api.Security
 {
     public class SecurityConstants
     {
-        public static readonly string UserNameClaim = "Name";
-        public static readonly string RoleClaim = "Roles";
+        public const string AdminPolicy = "AdminRequired";
 
-        public static readonly string AdminPolicy = "AdminRequired";
-
-        public static readonly string BaseUserRole = "BaseUser";
-        public static readonly string AdminRole = "Administrator";
+        public const string BaseUserRole = "BaseUser";
+        public const string AdminRole = "Administrator";
     }
 }

@@ -10,57 +10,39 @@ using System.Text;
 using System.Threading.Tasks;
 using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
-using TeamF_Api.Security.PasswordEncoders;
 
 namespace TeamF_Api.Security.Token
 {
     public class JwtTokenGenerator : ITokenGenerator
     {
-        private readonly CAFFShopDbContext _context;
-        private readonly IPasswordEncoder _encoder;
         private readonly SecurityConfiguration _config;
 
-        public JwtTokenGenerator(CAFFShopDbContext context, IPasswordEncoder encoder, IOptions<SecurityConfiguration> config)
+        public JwtTokenGenerator(IOptions<SecurityConfiguration> config)
         {
-            _context = context;
-            _encoder = encoder;
             _config = config.Value;
         }
 
-        public string GenerateToken(string userName, string password)
-        {
-            var user = _context.Users
-                .Where(u => u.Name.Equals(userName))
-                .FirstOrDefault();
-
-            if (user == null || !_encoder.Verify(password, user.Password))
-            {
-                throw new AuthenticationException($"Username or password incorrect");
-            }
-
-            return GenerateToken(user);
-        }
-
-        private string GenerateToken(User user)
+        public string GenerateToken(TokenData data)
         {
             var claims = new List<Claim>
             {
-                new Claim(SecurityConstants.UserNameClaim, user.Name),
-                new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
-                new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddHours(_config.TokenExpirationHours)).ToUnixTimeSeconds().ToString()),
+                new Claim(ClaimTypes.Name, data.UserName),
             };
-            foreach (var role in user.Roles)
+            foreach (var role in data.Roles)
             {
-                claims.Add(new Claim(SecurityConstants.RoleClaim, role.Name));
+                claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            var token = new JwtSecurityToken(
-                new JwtHeader(
-                    new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.Secret)),
-                    SecurityAlgorithms.HmacSha256)),
-                new JwtPayload(claims));
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_config.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddMinutes(_config.TokenExpirationInMinutes),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

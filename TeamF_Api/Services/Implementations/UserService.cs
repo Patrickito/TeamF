@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
 using TeamF_Api.Security;
-using TeamF_Api.Security.PasswordEncoders;
 using TeamF_Api.Security.Token;
 using TeamF_Api.Services.Exceptions;
 using TeamF_Api.Services.Interfaces;
@@ -15,73 +16,80 @@ namespace TeamF_Api.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly CAFFShopDbContext _context;
-        private readonly IPasswordEncoder _encoder;
         private readonly ITokenGenerator _tokenGenerator;
+        private readonly UserManager<User> _userManager;
+        private readonly CAFFShopDbContext _context;
 
-        public UserService(CAFFShopDbContext context, IPasswordEncoder encoder, ITokenGenerator tokenGenerator)
+        public UserService(ITokenGenerator tokenGenerator, UserManager<User> userManager, CAFFShopDbContext context)
         {
-            _context = context;
-            _encoder = encoder;
             _tokenGenerator = tokenGenerator;
+            _userManager = userManager;
+            _context = context;
         }
 
-        public async Task DeleteUser(long id)
+        public async Task ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userManager.FindByNameAsync(userName);
+            await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+        }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+        public async Task DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(user);
         }
 
         public async Task<User> FindUserByName(string name)
         {
-            return await _context.Users.Where(u => u.Name.Equals(name)).FirstOrDefaultAsync();
+            return await _userManager.FindByNameAsync(name);
         }
 
         public async Task<string> Login(string userName, string password)
         {
-            return _tokenGenerator.GenerateToken(userName, password);
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                throw new AuthenticationException($"User not found or incorrect password for user: {userName}");
+            }
+            var isValid = await _userManager.CheckPasswordAsync(user, password);
+            if (!isValid)
+            {
+                throw new AuthenticationException($"User not found or incorrect password for user: {userName}");
+            }
+
+            var tokenData = new TokenData
+            {
+                UserName = user.UserName,
+                Roles = user.Roles.Select(u => u.Name).ToList()
+            };
+            return _tokenGenerator.GenerateToken(tokenData);
         }
 
         public async Task RegisterUser(string userName, string password)
         {
-            var oldUser = await _context.Users
-                .Where(u => u.Name.Equals(userName))
-                .FirstOrDefaultAsync();
-            if (oldUser != null)
-            {
-                throw new ConflictingUserNameException($"User already exists with name: {userName}");
-            }
+            var baseUser = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.BaseUserRole));
+            var admin = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole));
 
-            var baseRole = await _context.Roles
-                .Where(r => r.Name.Equals(SecurityConstants.BaseUserRole))
-                .FirstOrDefaultAsync();
-            var newUser = new User
+            var user = new User
             {
-                Name = userName,
-                Password = _encoder.Encrypt(password),
-                Roles = new List<Role> { baseRole }
+                UserName = userName,
+                Roles = new List<Role>
+                {
+                    baseUser, admin
+                }
             };
 
-            await _context.Users.AddAsync(newUser);
-            await _context.SaveChangesAsync();
+            var result = await _userManager.CreateAsync(user, password);
         }
 
-        public async Task UpdateUser(User user)
+        public async Task UpdateRoles(string userName, ICollection<string> roles)
         {
-            var oldData = _context.Users.Find(user.Id);
-            if (oldData == null)
-            {
-                await RegisterUser(user.Name, user.Password);
-            }
-            else
-            {
-                user.Password = _encoder.Encrypt(user.Password);
-                _context.Entry(oldData).CurrentValues.SetValues(user);
-            }
+            var user = await _userManager.FindByNameAsync(userName);
+            user.Roles = roles.Select(r => _context.Roles.FirstOrDefault(role => role.Name.Equals(r)))
+                .Where(r => r != null)
+                .ToList();
 
-            await _context.SaveChangesAsync();
+            await _userManager.UpdateAsync(user);
         }
     }
 }

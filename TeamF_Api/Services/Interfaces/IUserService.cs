@@ -14,8 +14,10 @@ namespace TeamF_Api.Services.Interfaces
 
         Task<User> FindUserByName(string name);
 
-        Task UpdateUser(User user);
+        Task DeleteUser(string id);
 
-        Task DeleteUser(long id);
+        Task ChangePassword(string userName, string oldPassword, string newPassword);
+
+        Task UpdateRoles(string userName, ICollection<string> roles);
     }
 }

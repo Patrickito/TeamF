@@ -7,6 +7,6 @@ namespace TeamF_Api.Security.Token
 {
     public interface ITokenGenerator
     {
-        string GenerateToken(string userName, string password);
+        string GenerateToken(TokenData data);
     }
 }
