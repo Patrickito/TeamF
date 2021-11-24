@@ -28,7 +28,7 @@ namespace TeamF_Api.Services.Implementations
             comment.UserId = (await _userManager.FindByNameAsync(username)).Id;
             if (comment.UserId == null)
                 return null;
-            var result = _context.Comments.Add(comment);
+            var result = _context.Comment.Add(comment);
             _context.SaveChanges();
             return result.Entity;
 
@@ -40,11 +40,11 @@ namespace TeamF_Api.Services.Implementations
                 .Roles.Contains(_context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole)));
             if (isAdmin)
             {
-                var result = await _context.Comments
+                var result = await _context.Comment
                     .FirstOrDefaultAsync(e => e.Id == commentId);
                 if (result != null)
                 {
-                    _context.Comments.Remove(result);
+                    _context.Comment.Remove(result);
                     await _context.SaveChangesAsync();
                     return;
                 }
@@ -56,7 +56,7 @@ namespace TeamF_Api.Services.Implementations
             Guid? userId = (await _userManager.FindByNameAsync(username))?.Id;
             if (userId == null)
                 return new List<Comment>();
-            return _context.Comments.Where(c => c.CaffFileId == caffId).ToList();
+            return _context.Comment.Where(c => c.CaffEntityId == caffId).ToList();
 
 
         }

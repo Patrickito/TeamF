@@ -36,10 +36,17 @@ namespace TeamF_Api.DAL
                     new Role { Id = 2, Name = "Administrator" });
             });
 
+            modelBuilder.Entity<Comment>()
+               .HasOne<CaffEntity>(s => s.CaffEntity)
+               .WithMany(c => c.Comments)
+               .HasForeignKey(u => u.CaffEntityId)
+               .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<CaffEntity> CaffEntity { get; set; }
+        public DbSet<Img> Img { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Caff> Caffs { get; set; }
     }
 }
