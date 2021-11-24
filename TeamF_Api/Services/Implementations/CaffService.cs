@@ -57,6 +57,7 @@ namespace TeamF_Api.Services.Implementations
             return await _context.CaffEntity
                 .Include(e => e.Images)
                 .ThenInclude(ei => ei.Tags)
+                .Include(c=>c.Comments)
                 .FirstOrDefaultAsync(c=>c.Id == id);
         }
 
