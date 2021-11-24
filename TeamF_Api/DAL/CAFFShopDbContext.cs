@@ -47,6 +47,7 @@ namespace TeamF_Api.DAL
         public DbSet<Comment> Comment { get; set; }
         public DbSet<CaffEntity> CaffEntity { get; set; }
         public DbSet<Img> Img { get; set; }
+        public DbSet<Tag> Tag { get; set; }
         public DbSet<Role> Roles { get; set; }
     }
 }

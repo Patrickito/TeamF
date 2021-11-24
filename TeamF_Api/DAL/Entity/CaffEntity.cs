@@ -10,7 +10,8 @@ namespace TeamF_Api.DAL.Entity
         public int Id { get; set; }
         public virtual User Owner { get; set; }
         public Guid OwnerId { get; set; }
-        public string Place { get; set; }
+        public string Creator { get; set; }
+        public string Address { get; set; }
         public virtual ICollection<Img> Images { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 

@@ -37,7 +37,9 @@ namespace TeamF_Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                ); ;
 
             services.AddDbContext<CAFFShopDbContext>(
                 options => options
@@ -74,6 +76,7 @@ namespace TeamF_Api
                 };
             });
 
+
             services.AddAuthorization(options =>
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder()
@@ -94,6 +97,7 @@ namespace TeamF_Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ICaffService, CaffService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
