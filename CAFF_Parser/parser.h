@@ -5,6 +5,7 @@
 
 class Parser {
 	void openFile(const std::string filename, FILE*& ptr);
+	void closeFile(FILE*& ptr);
 	unsigned __int64 getFileSize(std::string filename);
 	std::shared_ptr<BlockHeader> processBlockHeader(FILE*& ptr, const unsigned __int64 fileSize);
 	std::shared_ptr<CaffHeader> processCaffHeader(FILE*& ptr, const unsigned __int64 fileSize, const std::shared_ptr<BlockHeader> bh);

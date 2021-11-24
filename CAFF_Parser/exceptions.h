@@ -12,6 +12,12 @@ struct Unable_To_Open_Exception : public std::exception {
     }
 };
 
+struct Unable_To_Close_Exception : public std::exception {
+    const char* what() const throw () {
+        return "Unable to close CAFF file.";
+    }
+};
+
 struct Multiple_Header_Block_Exception : public std::exception {
     const char* what() const throw () {
         return "Multiple CAFF header block.";

@@ -8,7 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 public partial class CharVector : global::System.IDisposable, global::System.Collections.IEnumerable, global::System.Collections.Generic.IList<char>
  {
@@ -343,7 +343,7 @@ public partial class CharVector : global::System.IDisposable, global::System.Col
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 public partial class Parser : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -413,7 +413,7 @@ public partial class Parser : global::System.IDisposable {
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 public partial class Caff : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -720,7 +720,7 @@ public partial class Caff : global::System.IDisposable {
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 class Caff_Parser_WrapperPINVOKE {
 
@@ -905,202 +905,202 @@ class Caff_Parser_WrapperPINVOKE {
   }
 
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Clear")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Clear")]
   public static extern void CharVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Add")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Add")]
   public static extern void CharVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, char jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_size")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_size")]
   public static extern uint CharVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_capacity")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_capacity")]
   public static extern uint CharVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_reserve")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_reserve")]
   public static extern void CharVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_CharVector__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_CharVector__SWIG_0")]
   public static extern global::System.IntPtr new_CharVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_CharVector__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_CharVector__SWIG_1")]
   public static extern global::System.IntPtr new_CharVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_CharVector__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_CharVector__SWIG_2")]
   public static extern global::System.IntPtr new_CharVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_getitemcopy")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_getitemcopy")]
   public static extern char CharVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_getitem")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_getitem")]
   public static extern char CharVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_setitem")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_setitem")]
   public static extern void CharVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, char jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_AddRange")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_AddRange")]
   public static extern void CharVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_GetRange")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_GetRange")]
   public static extern global::System.IntPtr CharVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Insert")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Insert")]
   public static extern void CharVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, char jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_InsertRange")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_InsertRange")]
   public static extern void CharVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_RemoveAt")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_RemoveAt")]
   public static extern void CharVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_RemoveRange")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_RemoveRange")]
   public static extern void CharVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Repeat")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Repeat")]
   public static extern global::System.IntPtr CharVector_Repeat(char jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Reverse__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Reverse__SWIG_0")]
   public static extern void CharVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Reverse__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Reverse__SWIG_1")]
   public static extern void CharVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_SetRange")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_SetRange")]
   public static extern void CharVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Contains")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Contains")]
   public static extern bool CharVector_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, char jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_IndexOf")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_IndexOf")]
   public static extern int CharVector_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, char jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_LastIndexOf")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_LastIndexOf")]
   public static extern int CharVector_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, char jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_CharVector_Remove")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_CharVector_Remove")]
   public static extern bool CharVector_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, char jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_delete_CharVector")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_delete_CharVector")]
   public static extern void delete_CharVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Parser_parseCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Parser_parseCaff")]
   public static extern global::System.IntPtr Parser_parseCaff(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Parser_parseCaffSwigExplicitParser")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Parser_parseCaffSwigExplicitParser")]
   public static extern global::System.IntPtr Parser_parseCaffSwigExplicitParser(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_delete_Parser")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_delete_Parser")]
   public static extern void delete_Parser(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_Parser")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_Parser")]
   public static extern global::System.IntPtr new_Parser();
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Parser_director_connect")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Parser_director_connect")]
   public static extern void Parser_director_connect(global::System.Runtime.InteropServices.HandleRef jarg1, Parser.SwigDelegateParser_0 delegate0);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_r_set")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_r_set")]
   public static extern void Caff_Pixel_r_set(global::System.Runtime.InteropServices.HandleRef jarg1, byte jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_r_get")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_r_get")]
   public static extern byte Caff_Pixel_r_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_g_set")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_g_set")]
   public static extern void Caff_Pixel_g_set(global::System.Runtime.InteropServices.HandleRef jarg1, byte jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_g_get")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_g_get")]
   public static extern byte Caff_Pixel_g_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_b_set")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_b_set")]
   public static extern void Caff_Pixel_b_set(global::System.Runtime.InteropServices.HandleRef jarg1, byte jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Pixel_b_get")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Pixel_b_get")]
   public static extern byte Caff_Pixel_b_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_Caff_Pixel")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_Caff_Pixel")]
   public static extern global::System.IntPtr new_Caff_Pixel();
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_delete_Caff_Pixel")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_delete_Caff_Pixel")]
   public static extern void delete_Caff_Pixel(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_Caff_Ciff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_Caff_Ciff")]
   public static extern global::System.IntPtr new_Caff_Ciff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getWidth")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getWidth")]
   public static extern ulong Caff_Ciff_getWidth(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getHeight")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getHeight")]
   public static extern ulong Caff_Ciff_getHeight(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getCaption")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getCaption")]
   public static extern global::System.IntPtr Caff_Ciff_getCaption(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getTags")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getTags")]
   public static extern global::System.IntPtr Caff_Ciff_getTags(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getDuration")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getDuration")]
   public static extern ulong Caff_Ciff_getDuration(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_Ciff_getPixelAt")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_Ciff_getPixelAt")]
   public static extern global::System.IntPtr Caff_Ciff_getPixelAt(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2, ulong jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_delete_Caff_Ciff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_delete_Caff_Ciff")]
   public static extern void delete_Caff_Ciff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_new_Caff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_new_Caff")]
   public static extern global::System.IntPtr new_Caff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_delete_Caff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_delete_Caff")]
   public static extern void delete_Caff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getAnimationNumber")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getAnimationNumber")]
   public static extern ulong Caff_getAnimationNumber(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getAnimationNumberSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getAnimationNumberSwigExplicitCaff")]
   public static extern ulong Caff_getAnimationNumberSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getYear")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getYear")]
   public static extern ushort Caff_getYear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getYearSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getYearSwigExplicitCaff")]
   public static extern ushort Caff_getYearSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getMonth")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getMonth")]
   public static extern byte Caff_getMonth(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getMonthSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getMonthSwigExplicitCaff")]
   public static extern byte Caff_getMonthSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getDay")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getDay")]
   public static extern byte Caff_getDay(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getDaySwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getDaySwigExplicitCaff")]
   public static extern byte Caff_getDaySwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getHour")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getHour")]
   public static extern byte Caff_getHour(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getHourSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getHourSwigExplicitCaff")]
   public static extern byte Caff_getHourSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getMinute")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getMinute")]
   public static extern byte Caff_getMinute(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getMinuteSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getMinuteSwigExplicitCaff")]
   public static extern byte Caff_getMinuteSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getCreator")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getCreator")]
   public static extern global::System.IntPtr Caff_getCreator(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getCreatorSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getCreatorSwigExplicitCaff")]
   public static extern global::System.IntPtr Caff_getCreatorSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getCaffAnimation")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getCaffAnimation")]
   public static extern global::System.IntPtr Caff_getCaffAnimation(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_getCaffAnimationSwigExplicitCaff")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_getCaffAnimationSwigExplicitCaff")]
   public static extern global::System.IntPtr Caff_getCaffAnimationSwigExplicitCaff(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_Wrapper_Example_Caff_director_connect")]
+  [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="CSharp_TeamF_Api_Caff_director_connect")]
   public static extern void Caff_director_connect(global::System.Runtime.InteropServices.HandleRef jarg1, Caff.SwigDelegateCaff_0 delegate0, Caff.SwigDelegateCaff_1 delegate1, Caff.SwigDelegateCaff_2 delegate2, Caff.SwigDelegateCaff_3 delegate3, Caff.SwigDelegateCaff_4 delegate4, Caff.SwigDelegateCaff_5 delegate5, Caff.SwigDelegateCaff_6 delegate6, Caff.SwigDelegateCaff_7 delegate7);
 
 
@@ -1139,6 +1139,25 @@ class Unable_To_Open_ExceptionHelper {
     }
 }
 static Unable_To_Open_ExceptionHelper _Unable_To_Open_ExceptionHelper = new Unable_To_Open_ExceptionHelper();
+
+
+
+class Unable_To_Close_ExceptionHelper {
+    public delegate void CustomExceptionDelegate(string message);
+    static CustomExceptionDelegate customDelegate = new CustomExceptionDelegate(SetPendingCustomException);
+
+    [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="Unable_To_Close_Exception" + "RegisterCallback")]
+    public static extern void Unable_To_Close_ExceptionRegisterCallback(CustomExceptionDelegate customCallback);
+
+    static void SetPendingCustomException(string message) {
+        SWIGPendingException.Set(new Unable_To_Close_Exception(message));
+    }
+
+    static Unable_To_Close_ExceptionHelper() {
+        Unable_To_Close_ExceptionRegisterCallback(customDelegate);
+    }
+}
+static Unable_To_Close_ExceptionHelper _Unable_To_Close_ExceptionHelper = new Unable_To_Close_ExceptionHelper();
 
 
 
@@ -1466,7 +1485,7 @@ static Invalid_Date_ExceptionHelper _Invalid_Date_ExceptionHelper = new Invalid_
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 
 
@@ -1475,6 +1494,9 @@ public class Invalid_Extension_Exception : global::System.ApplicationException {
 }
 public class Unable_To_Open_Exception : global::System.ApplicationException {
 	public Unable_To_Open_Exception(string message) : base(message) {}
+}
+public class Unable_To_Close_Exception : global::System.ApplicationException {
+	public Unable_To_Close_Exception(string message) : base(message) {}
 }
 public class Multiple_Header_Block_Exception : global::System.ApplicationException {
 	public Multiple_Header_Block_Exception(string message) : base(message) {}
@@ -1532,7 +1554,7 @@ public class Caff_Parser_Wrapper {
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 public class SWIGTYPE_p_std__shared_ptrT_CaffNative_t {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -1551,7 +1573,7 @@ public class SWIGTYPE_p_std__shared_ptrT_CaffNative_t {
 }
 
 }
-namespace Wrapper_Example {
+namespace TeamF_Api {
 
 public class SWIGTYPE_p_std__shared_ptrT_CaffAnimation_t {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;

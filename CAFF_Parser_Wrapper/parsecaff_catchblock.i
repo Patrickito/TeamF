@@ -7,6 +7,9 @@
 	}catch(Unable_To_Open_Exception &_e) {
         SWIG_CSharpSetPending_Unable_To_Open_Exception((&_e)->what());
         return $null;
+	}catch(Unable_To_Close_Exception &_e) {
+        SWIG_CSharpSetPending_Unable_To_Close_Exception((&_e)->what());
+        return $null;
 	} catch(Multiple_Header_Block_Exception &_e) {
 		SWIG_CSharpSetPending_Multiple_Header_Block_Exception((&_e)->what());
         return $null;

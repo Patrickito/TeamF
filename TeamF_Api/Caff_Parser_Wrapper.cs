@@ -1142,6 +1142,25 @@ static Unable_To_Open_ExceptionHelper _Unable_To_Open_ExceptionHelper = new Unab
 
 
 
+class Unable_To_Close_ExceptionHelper {
+    public delegate void CustomExceptionDelegate(string message);
+    static CustomExceptionDelegate customDelegate = new CustomExceptionDelegate(SetPendingCustomException);
+
+    [global::System.Runtime.InteropServices.DllImport("Caff_Parser_Wrapper", EntryPoint="Unable_To_Close_Exception" + "RegisterCallback")]
+    public static extern void Unable_To_Close_ExceptionRegisterCallback(CustomExceptionDelegate customCallback);
+
+    static void SetPendingCustomException(string message) {
+        SWIGPendingException.Set(new Unable_To_Close_Exception(message));
+    }
+
+    static Unable_To_Close_ExceptionHelper() {
+        Unable_To_Close_ExceptionRegisterCallback(customDelegate);
+    }
+}
+static Unable_To_Close_ExceptionHelper _Unable_To_Close_ExceptionHelper = new Unable_To_Close_ExceptionHelper();
+
+
+
 class Multiple_Header_Block_ExceptionHelper {
     public delegate void CustomExceptionDelegate(string message);
     static CustomExceptionDelegate customDelegate = new CustomExceptionDelegate(SetPendingCustomException);
@@ -1475,6 +1494,9 @@ public class Invalid_Extension_Exception : global::System.ApplicationException {
 }
 public class Unable_To_Open_Exception : global::System.ApplicationException {
 	public Unable_To_Open_Exception(string message) : base(message) {}
+}
+public class Unable_To_Close_Exception : global::System.ApplicationException {
+	public Unable_To_Close_Exception(string message) : base(message) {}
 }
 public class Multiple_Header_Block_Exception : global::System.ApplicationException {
 	public Multiple_Header_Block_Exception(string message) : base(message) {}

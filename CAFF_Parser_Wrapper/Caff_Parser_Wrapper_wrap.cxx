@@ -344,6 +344,18 @@ static void SWIG_CSharpSetPending_Unable_To_Open_Exception(const char *msg) {
 }
 
 
+CSharpExceptionCallback_t Unable_To_Close_ExceptionCallback = NULL;
+
+extern "C" SWIGEXPORT
+void SWIGSTDCALL Unable_To_Close_ExceptionRegisterCallback(CSharpExceptionCallback_t customCallback) {
+  Unable_To_Close_ExceptionCallback = customCallback;
+}
+
+static void SWIG_CSharpSetPending_Unable_To_Close_Exception(const char *msg) {
+  Unable_To_Close_ExceptionCallback(msg);
+}
+
+
 CSharpExceptionCallback_t Multiple_Header_Block_ExceptionCallback = NULL;
 
 extern "C" SWIGEXPORT
@@ -1413,6 +1425,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Parser_parseCaff(void * jarg1, ch
     }catch(Unable_To_Open_Exception &_e) {
       SWIG_CSharpSetPending_Unable_To_Open_Exception((&_e)->what());
       return 0;
+    }catch(Unable_To_Close_Exception &_e) {
+      SWIG_CSharpSetPending_Unable_To_Close_Exception((&_e)->what());
+      return 0;
     } catch(Multiple_Header_Block_Exception &_e) {
       SWIG_CSharpSetPending_Multiple_Header_Block_Exception((&_e)->what());
       return 0;
@@ -1491,6 +1506,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_TeamF_Api_Parser_parseCaffSwigExplicitParse
       return 0;
     }catch(Unable_To_Open_Exception &_e) {
       SWIG_CSharpSetPending_Unable_To_Open_Exception((&_e)->what());
+      return 0;
+    }catch(Unable_To_Close_Exception &_e) {
+      SWIG_CSharpSetPending_Unable_To_Close_Exception((&_e)->what());
       return 0;
     } catch(Multiple_Header_Block_Exception &_e) {
       SWIG_CSharpSetPending_Multiple_Header_Block_Exception((&_e)->what());

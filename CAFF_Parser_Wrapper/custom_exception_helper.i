@@ -41,6 +41,7 @@ static name ## Helper _ ## name ## Helper = new name ## Helper();
 
 CustomExceptionCallback(Invalid_Extension_Exception);
 CustomExceptionCallback(Unable_To_Open_Exception);
+CustomExceptionCallback(Unable_To_Close_Exception);
 CustomExceptionCallback(Multiple_Header_Block_Exception);
 CustomExceptionCallback(Multiple_Credits_Block_Exception);
 CustomExceptionCallback(Invalid_Caff_File_Size_Exception);
@@ -61,6 +62,7 @@ CustomExceptionCallback(Invalid_Date_Exception);
 
 CustomExceptionHelper(Invalid_Extension_Exception);
 CustomExceptionHelper(Unable_To_Open_Exception);
+CustomExceptionHelper(Unable_To_Close_Exception);
 CustomExceptionHelper(Multiple_Header_Block_Exception);
 CustomExceptionHelper(Multiple_Credits_Block_Exception);
 CustomExceptionHelper(Invalid_Caff_File_Size_Exception);

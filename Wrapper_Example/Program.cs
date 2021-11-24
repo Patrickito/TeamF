@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Wrapper_Example
+namespace TeamF_Api
 {
 	class Program
 	{
@@ -60,6 +60,8 @@ namespace Wrapper_Example
 			{
 				Console.WriteLine("Error: " + e.Message);
 			}
+
+			Console.ReadKey();
 		}
 	}
 }

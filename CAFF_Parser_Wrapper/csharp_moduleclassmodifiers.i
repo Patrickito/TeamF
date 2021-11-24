@@ -6,6 +6,9 @@ public class Invalid_Extension_Exception : global::System.ApplicationException {
 public class Unable_To_Open_Exception : global::System.ApplicationException {
 	public Unable_To_Open_Exception(string message) : base(message) {}
 }
+public class Unable_To_Close_Exception : global::System.ApplicationException {
+	public Unable_To_Close_Exception(string message) : base(message) {}
+}
 public class Multiple_Header_Block_Exception : global::System.ApplicationException {
 	public Multiple_Header_Block_Exception(string message) : base(message) {}
 }
