@@ -39,5 +39,7 @@ namespace TeamF_Api.DAL
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Caff> Caffs { get; set; }
     }
 }

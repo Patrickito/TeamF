@@ -10,8 +10,8 @@ using TeamF_Api.DAL;
 namespace TeamF_Api.Migrations
 {
     [DbContext(typeof(CAFFShopDbContext))]
-    [Migration("20211123214141_Authentication")]
-    partial class Authentication
+    [Migration("20211124114656_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
