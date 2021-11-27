@@ -32,7 +32,7 @@ namespace TeamF_Api.Controllers
         [HttpPost("register", Name = "Register")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Register(AuthenticationDto newUser)
+        public async Task<IActionResult> Register([FromBody] AuthenticationDto newUser)
         {
             _logger.LogDebug($"Registration request for user: ${newUser.UserName}");
 
@@ -52,7 +52,7 @@ namespace TeamF_Api.Controllers
         [HttpPost("login", Name = "Login")]
         [ProducesResponseType(typeof(TokenDTO), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Login(AuthenticationDto userData)
+        public async Task<IActionResult> Login([FromBody] AuthenticationDto userData)
         {
             string token;
             try
