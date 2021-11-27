@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationDto } from '../api/models';
 import { AuthenticationService } from '../api/services';
 
@@ -14,12 +15,12 @@ export class LoginComponent implements OnInit {
     password:""
   }
   submitted = false;
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService,private router:Router) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
-    this.authService.login({body:this.model}).subscribe()
+    this.authService.login({body:this.model}).subscribe(a=>this.router.navigate(["/admin"]))
 
   }
 

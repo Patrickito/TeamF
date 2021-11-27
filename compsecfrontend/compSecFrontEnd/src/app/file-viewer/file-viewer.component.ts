@@ -22,10 +22,10 @@ path:string=""
     this.path="/assets/response.jpg"
   }
   onSubmit(){
-    this.commentService.addCaffFileComment({body:this.model})
+    this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.caffService.getImgFile({id: this.model2.id||0})
+    this.caffService.getImgFile({id: this.model2.id||0}).subscribe()
   }
 
 }
