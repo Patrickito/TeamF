@@ -4,6 +4,7 @@ import { CaffEntity, Comment } from '../api/models';
 import { CaffService, CommentService } from '../api/services';
 import {Observable} from 'rxjs'
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-viewer',
@@ -17,15 +18,15 @@ export class FileViewerComponent implements OnInit {
   model2:CaffEntity={
     
   }
-path:string=""
-  constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient) { }
+path:SafeUrl=""
+  constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient,private sanitizer:DomSanitizer) { }
   getImage(imageUrl: string): Observable<Blob> {
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
   createImageFromBlob(image: Blob) {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
-       this.path=reader.result!!.toString()
+       this.path=this.sanitizer.bypassSecurityTrustUrl(reader.result!!.toString())
     }, false);
  
     if (image) {
