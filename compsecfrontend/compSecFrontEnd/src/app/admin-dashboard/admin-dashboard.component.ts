@@ -17,10 +17,17 @@ export class AdminDashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_; console.log(this.caffImgs)})
+    this.reloadCaffs()
   }
   changeUser(){
     this.authService.changeRoles({body:this.selectedUser})
+  }
+  RemoveCaff(e:any,img:CaffEntity){
+    this.caffService.deleteCaffFile({id:img.id!!}).subscribe(_=>this.reloadCaffs())
+    
+  }
+  reloadCaffs(){
+    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_;})
   }
 
 
