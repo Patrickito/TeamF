@@ -40,6 +40,7 @@ namespace TeamF_Api
             services.AddControllers().AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 ); ;
+            services.AddSwaggerGen();
 
             services.AddDbContext<CAFFShopDbContext>(
                 options => options
@@ -111,6 +112,13 @@ namespace TeamF_Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AdventureGamePest API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();

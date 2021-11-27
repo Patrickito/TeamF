@@ -30,8 +30,12 @@ namespace TeamF_Api.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost(Name = "UploadCaffFIle")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Consumes("multipart/form-data")]
         public async Task<ActionResult> Upload()
         {
             try
@@ -129,32 +133,45 @@ namespace TeamF_Api.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteCaffFile")]
         [Authorize(Policy = SecurityConstants.AdminPolicy)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> Delete(int id)
         {
             await _service.DeleteCaffAsync(id);
             return NoContent();
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetAllCaffFiles")]
         [Authorize]
+        [ProducesResponseType(typeof(List<CaffEntity>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Produces("application/json")]
+        [Consumes("application/json")]
         public async Task<ActionResult<List<CaffEntity>>> ListAllCaff()
         {
             return await _service.GetCaffs();
         }
 
-        [HttpGet("CaffFile/{id}")]
+        [HttpGet("CaffFile/{id}", Name = "GetCaffFile")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Produces("image/caff")]
         public async Task<ActionResult> GetCaffFile(int id)
         {
             CaffEntity ce = await _service.GetCaff(id);
-            Byte[] b = System.IO.File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(),ce.Address));         
+            Byte[] b = System.IO.File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), ce.Address));
             return File(b, "image/caff");
         }
 
-        [HttpGet("ImgFile/{id}")]
+        [HttpGet("ImgFile/{id}", Name = "GetImgFile")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Produces("application/octet-stream")]
         public async Task<ActionResult> GetImgFile(int id)
         {
             Img ce = await _service.GetImg(id);

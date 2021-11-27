@@ -13,6 +13,8 @@ namespace TeamF_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
+    [Consumes("application/json")]
     public class CommentController : ControllerBase
     {
         private readonly ICommentService _service;
@@ -23,14 +25,19 @@ namespace TeamF_Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("CaffFile/{id}")]
+        [HttpGet("CaffFile/{id}", Name = "GetCaffFileComment")]
+        [ProducesResponseType(typeof(List<Comment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<List<Comment>>> GetCaffFileComment(int id)
         {
             return await _service.GetCommentsForCaff(User.Identity.Name, id);
         }
 
         [Authorize(Policy = SecurityConstants.AdminPolicy)]
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteCaffFileComment")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> Delete(int id)
         {
             await _service.DeleteComment(User.Identity.Name, id);
@@ -38,7 +45,9 @@ namespace TeamF_Api.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost(Name = "AddCaffFileComment")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<Comment>> AddComment([FromBody] Comment newComment)
         {
             return await _service.AddComment(User.Identity.Name, newComment);
