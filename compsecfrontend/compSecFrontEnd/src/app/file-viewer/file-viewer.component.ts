@@ -13,11 +13,13 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class FileViewerComponent implements OnInit {
   model:Comment={
+    caffEntityId:1,
     commentText:""
   }
   model2:CaffEntity={
     
   }
+  comments:Comment[]=[]
 path:SafeUrl=""
   constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient,private sanitizer:DomSanitizer) { }
   getImage(imageUrl: string): Observable<Blob> {
@@ -34,12 +36,15 @@ path:SafeUrl=""
     }
   }
   ngOnInit(): void {
+      this.caffService.getCaffFile({id:1}).subscribe(_=>console.log(_))
+      this.commentService.getCaffFileComment({id:1}).subscribe(_=>{this.comments=_; console.log(this.comments)})
+      
       this.getImage("http://localhost:4200/api/api/Caff/imgfile/1").subscribe(_=>this.createImageFromBlob(_))
   }
   onSubmit(){
     this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.caffService.getImgFile({id: this.model2.id||0}).subscribe()
+    this.caffService.getImgFile({id: this.model2.id||1}).subscribe()
   }
 }
