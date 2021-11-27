@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,6 +16,8 @@ namespace TeamF_Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
+    [Consumes("application/json")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _service;
@@ -26,7 +29,9 @@ namespace TeamF_Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost("register")]
+        [HttpPost("register", Name = "Register")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register(AuthenticationDto newUser)
         {
             _logger.LogDebug($"Registration request for user: ${newUser.UserName}");
@@ -44,7 +49,9 @@ namespace TeamF_Api.Controllers
             return NoContent();
         }
 
-        [HttpPost("login")]
+        [HttpPost("login", Name = "Login")]
+        [ProducesResponseType(typeof(TokenDTO), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login(AuthenticationDto userData)
         {
             string token;
@@ -58,13 +65,15 @@ namespace TeamF_Api.Controllers
                 return Unauthorized();
             }
 
-            var result = new { Token = token };
+            var result = new TokenDTO { Token = token };
 
             return Ok(result);
         }
 
         [Authorize]
-        [HttpPost("changePassword")]
+        [HttpPost("changePassword", Name = "ChangePassword")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ChangePassword([FromBody] PasswordChangeDTO param)
         {
             string userName = GetUserName();
@@ -82,7 +91,10 @@ namespace TeamF_Api.Controllers
         }
 
         [Authorize(Policy = SecurityConstants.AdminPolicy)]
-        [HttpPost("changeRoles")]
+        [HttpPost("changeRoles", Name = "ChangeRoles")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> ChangeRoles([FromBody] RoleChangeDTO param)
         {
             try
