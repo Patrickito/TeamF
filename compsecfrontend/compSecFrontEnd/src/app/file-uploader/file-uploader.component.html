@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="avatar">Choose a file to upload</label>
+
+    <input type="file"
+       id="avatar" name="avatar"
+    (change)="onFileChanged($event)"
+    >
+    <button type="submit" class="btn btn-success">
+        Submit
+      </button>
+</form>
