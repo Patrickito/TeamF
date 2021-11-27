@@ -20,35 +20,16 @@ export class FileUploaderComponent implements OnInit {
       return
 
     }
-    let file: File = files[0];
+    let file = files;
 
-    this.uploadFile("http://localhost:4200/api/Caff/UploadCaffFIle", file)
-      .subscribe(
-        event => {
-          if (event.type == HttpEventType.UploadProgress) {
-            //const percentDone = Math.round(100 * event.loaded / event.total);
-            //console.log(`File is ${percentDone}% loaded.`);
-          } else if (event instanceof HttpResponse) {
-            console.log('File is completely loaded!');
-          }
-        },
-        (err) => {
-          console.log("Upload Error:", err);
-        }, () => {
-          console.log("Upload done");
-        }
-      )
+    this.uploadFile("http://localhost:4200/api/api/Caff/", file[0])
+      .subscribe()
   }
-  uploadFile(url:string,file: File):Observable<HttpEvent<unknown>>{
+  uploadFile(url:string,file: File):Observable<Object>{
     let formData:FormData=new FormData()
-    formData.append('upload',file)
+    formData.append('1',file)
     let params=new HttpParams();
-    const options ={
-      params:params,
-      reportProgress: true
-    }
-    const req=new HttpRequest('Post',url,formData,options)
-    return this.http.request(req)
+    return this.http.post(url,formData)
   }
   onSubmit(){
     console.log(this.file)
