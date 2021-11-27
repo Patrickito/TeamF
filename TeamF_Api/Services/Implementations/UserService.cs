@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Castle.Core.Internal;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -70,13 +71,13 @@ namespace TeamF_Api.Services.Implementations
             var baseUser = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.BaseUserRole));
             var admin = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole));
 
+            var isFirstUser = !_context.Users.Any();
+            var userRoles = isFirstUser ? new List<Role> { baseUser, admin } : new List<Role> { baseUser };
+
             var user = new User
             {
                 UserName = userName,
-                Roles = new List<Role>
-                {
-                    baseUser, admin
-                }
+                Roles = userRoles
             };
 
             var result = await _userManager.CreateAsync(user, password);
