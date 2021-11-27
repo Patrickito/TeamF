@@ -9,6 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
+import { ApiModule } from './api/api.module';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,15 @@ import { FileViewerComponent } from './file-viewer/file-viewer.component';
     LoginComponent,
     PasswordChangeComponent,
     FileUploaderComponent,
-    FileViewerComponent
+    FileViewerComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ApiModule.forRoot({rootUrl:"localhost:4200/api"})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -87,10 +87,11 @@ export class AuthenticationService extends BaseService {
   }): Observable<StrictHttpResponse<TokenDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthenticationService.LoginPath, 'post');
+    
     if (params) {
       rb.body(params.body, 'application/json');
     }
-
+    console.log(rb)
     return this.http.request(rb.build({
       responseType: 'json',
       accept: 'application/json'

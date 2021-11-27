@@ -1,15 +1,19 @@
 <div class="container" style="padding: 0px !important;">
   <div class="card mb-3 ">
     <div class="card-body row">
-      <h5 class="card-title col-3">TEMPFILENAME</h5>
-      <img class="col-9" src="{{path}}" />
-      <div class="card-text col-12">COMMENTS????</div>
+      <div class="col-6">
+        <div class="card-title ">TEMPFILENAME</div>
+        <div class="card-text ">COMMENTS????</div>
+        <div class="card-text"><a class="btn" (click)="downloadCaff()">Download Caff</a></div>
+      </div>
+      <img class="col-6" src="{{path}}" />
+
 
     </div>
     <form (ngSubmit)="onSubmit()" #login="ngForm" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="name">Add Comment:</label>
-        <input type="text" class="form-control" id="comment" required [(ngModel)]="model.comment" name="comment"
+        <input type="text" class="form-control" id="comment" required [(ngModel)]="model.commentText" name="comment"
           #name="ngModel" />
         <div class="invalid-feedback">Cannot add empty comment</div>
       </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { LoginComponent } from './login/login.component';
@@ -14,7 +15,9 @@ component: RegisterComponent},
 {path:'changePassword',component:PasswordChangeComponent},
 {path:'',redirectTo:'/login' ,pathMatch:'full' },
 {path:'fileupload',component:FileUploaderComponent},
-{path:'view',component:FileViewerComponent}
+{path:'view',component:FileViewerComponent},
+{path:'admin',component:AdminDashboardComponent},
+{path:'**', redirectTo:'/login',pathMatch:'full'}
 ];
 
 @NgModule({
