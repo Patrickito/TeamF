@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Login
+    </h1>
+    <form
+      (ngSubmit)="onSubmit()"
+      #login="ngForm"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="model.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div class="invalid-feedback">Username is required</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          ngModel
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+          class="form-control"
+          id="password"
+          [(ngModel)]="model.password"
+          name="password"
+          required
+        />
+        <div class="invalid-feedback"></div>
+      </div>
+      <button type="submit" class="btn btn-success">
+        Submit
+      </button>
+    </form>
+  </div>
+  

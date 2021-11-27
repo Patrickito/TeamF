@@ -1,0 +1,21 @@
+<div class="container" style="padding: 0px !important;">
+  <div class="card mb-3 ">
+    <div class="card-body row">
+      <h5 class="card-title col-3">TEMPFILENAME</h5>
+      <img class="col-9" src="{{path}}" />
+      <div class="card-text col-12">COMMENTS????</div>
+
+    </div>
+    <form (ngSubmit)="onSubmit()" #login="ngForm" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="name">Add Comment:</label>
+        <input type="text" class="form-control" id="comment" required [(ngModel)]="model.comment" name="comment"
+          #name="ngModel" />
+        <div class="invalid-feedback">Cannot add empty comment</div>
+      </div>
+      <button type="submit" class="btn btn-success">
+        Add comment
+      </button>
+    </form>
+  </div>
+</div>
