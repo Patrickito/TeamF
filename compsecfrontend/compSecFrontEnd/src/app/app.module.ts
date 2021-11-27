@@ -11,8 +11,11 @@ import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { ApiModule } from './api/api.module';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AuthService } from './authProxy/auth-service.service';
+import { AuthInterceptor } from './authProxy/auth.interceptor';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AppRoutingModule,
     ApiModule.forRoot({rootUrl:"http://localhost:4200/api"})
   ],
-  providers: [],
+  providers: [AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+      deps: [AuthService, Router],
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

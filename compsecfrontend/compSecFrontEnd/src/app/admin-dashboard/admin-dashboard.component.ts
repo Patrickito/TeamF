@@ -18,7 +18,7 @@ export class AdminDashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.caffService.getAllCaffFiles().subscribe(_=>this.caffImgs=_)
+    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_; console.log(this.caffImgs)})
   }
   changeUser(){
     this.authService.changeRoles({body:this.selectedUser})
