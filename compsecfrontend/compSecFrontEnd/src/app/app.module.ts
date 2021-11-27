@@ -29,7 +29,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ApiModule.forRoot({rootUrl:"localhost:4200/api"})
+    ApiModule.forRoot({rootUrl:"http://localhost:4200/api"})
   ],
   providers: [],
   bootstrap: [AppComponent]
