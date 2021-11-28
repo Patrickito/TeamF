@@ -1,10 +1,15 @@
+<app-menu></app-menu>
 <form (ngSubmit)="onSubmit()">
-    <label for="avatar">Choose a file to upload</label>
+    <p>
+      Add meg a feltöltendő fájlt:
+    </p>
 
     <input type="file"
     (change)="onFileChanged($event)" placeholder="Fájl feltöltés" accept=".caff"
     >
-    <button type="submit" class="btn btn-success">
+    <br/>
+    <br/>
+    <button type="submit" [disabled]="file===null" class="btn btn-success">
         Submit
       </button>
 </form>
