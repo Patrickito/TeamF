@@ -48,7 +48,7 @@ namespace TeamF_Api
                     .UseSqlServer(Configuration.GetConnectionString("SQLServer"))
             ); ;
 
-            services.AddIdentityCore<User>(o =>
+            services.AddIdentity<User, Role>(o =>
             {
                 o.Password.RequireDigit = false;
                 o.Password.RequireNonAlphanumeric = false;

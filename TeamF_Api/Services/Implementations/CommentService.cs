@@ -36,8 +36,9 @@ namespace TeamF_Api.Services.Implementations
 
         public async Task DeleteComment(string username, int commentId)
         {
-            bool isAdmin = (await _userManager.FindByNameAsync(username))
-                .Roles.Contains(_context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole)));
+            var user = await _userManager.FindByNameAsync(username);
+
+            bool isAdmin = await _userManager.IsInRoleAsync(user, SecurityConstants.AdminRole);
             if (isAdmin)
             {
                 var result = await _context.Comment

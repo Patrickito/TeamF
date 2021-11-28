@@ -9,7 +9,5 @@ namespace TeamF_Api.DAL.Entity
 {
     public class User : IdentityUser<Guid>
     {
-
-        public virtual ICollection<Role> Roles { get; set; }
     }
 }
