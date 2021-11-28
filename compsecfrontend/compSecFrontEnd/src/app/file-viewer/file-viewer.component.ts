@@ -48,8 +48,19 @@ private caffId:number=0
     this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>{console.log(_);var name = 'myfile.caff';
-    let blob = new Blob([String(_)], {type: "text/plain"});
-    saveAs(blob, name);})
+    this.http.get("http://localhost:4200/api/api/Caff/CaffFile/"+this.caffId,{ responseType: 'blob' as 'json'}).subscribe((response: any) =>{
+      let dataType = response.type;
+      console.log(dataType)
+      let binaryData = [];
+      binaryData.push(response);
+      let downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+      let filename="temp.caff"
+      if (filename)
+          downloadLink.setAttribute('download', filename);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+  }
+)
   }
 }
