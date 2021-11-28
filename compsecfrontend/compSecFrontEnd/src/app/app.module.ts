@@ -17,6 +17,7 @@ import { AuthService } from './authProxy/auth-service.service';
 import { AuthInterceptor } from './authProxy/auth.interceptor';
 import { Router } from '@angular/router';
 import { ImageBrowserComponent } from './image-browser/image-browser.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ImageBrowserComponent } from './image-browser/image-browser.component';
     FileUploaderComponent,
     FileViewerComponent,
     AdminDashboardComponent,
-    ImageBrowserComponent
+    ImageBrowserComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

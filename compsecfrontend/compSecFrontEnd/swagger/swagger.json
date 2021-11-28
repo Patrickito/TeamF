@@ -7,7 +7,9 @@
   "paths": {
     "/Authentication/register": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "Register",
         "requestBody": {
           "content": {
@@ -37,7 +39,9 @@
     },
     "/Authentication/login": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "Login",
         "requestBody": {
           "content": {
@@ -74,7 +78,9 @@
     },
     "/Authentication/changePassword": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "ChangePassword",
         "requestBody": {
           "content": {
@@ -104,7 +110,9 @@
     },
     "/Authentication/changeRoles": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "ChangeRoles",
         "requestBody": {
           "content": {
@@ -142,9 +150,54 @@
         }
       }
     },
+    "/Authentication/users": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "GetAllUsers",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDTO"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Caff": {
       "post": {
-        "tags": ["Caff"],
+        "tags": [
+          "Caff"
+        ],
         "operationId": "UploadCaffFIle",
         "responses": {
           "200": {
@@ -193,7 +246,9 @@
         }
       },
       "get": {
-        "tags": ["Caff"],
+        "tags": [
+          "Caff"
+        ],
         "operationId": "GetAllCaffFiles",
         "responses": {
           "200": {
@@ -224,7 +279,9 @@
     },
     "/api/Caff/{id}": {
       "delete": {
-        "tags": ["Caff"],
+        "tags": [
+          "Caff"
+        ],
         "operationId": "DeleteCaffFile",
         "parameters": [
           {
@@ -286,7 +343,9 @@
     },
     "/api/Caff/CaffFile/{id}": {
       "get": {
-        "tags": ["Caff"],
+        "tags": [
+          "Caff"
+        ],
         "operationId": "GetCaffFile",
         "parameters": [
           {
@@ -318,7 +377,9 @@
     },
     "/api/Caff/ImgFile/{id}": {
       "get": {
-        "tags": ["Caff"],
+        "tags": [
+          "Caff"
+        ],
         "operationId": "GetImgFile",
         "parameters": [
           {
@@ -350,7 +411,9 @@
     },
     "/api/Comment/CaffFile/{id}": {
       "get": {
-        "tags": ["Comment"],
+        "tags": [
+          "Comment"
+        ],
         "operationId": "GetCaffFileComment",
         "parameters": [
           {
@@ -392,7 +455,9 @@
     },
     "/api/Comment/{id}": {
       "delete": {
-        "tags": ["Comment"],
+        "tags": [
+          "Comment"
+        ],
         "operationId": "DeleteCaffFileComment",
         "parameters": [
           {
@@ -434,7 +499,9 @@
     },
     "/api/Comment": {
       "post": {
-        "tags": ["Comment"],
+        "tags": [
+          "Comment"
+        ],
         "operationId": "AddCaffFileComment",
         "requestBody": {
           "content": {
@@ -621,10 +688,12 @@
             "nullable": true
           }
         },
-        "additionalProperties": {}
+        "additionalProperties": { }
       },
       "Role": {
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -757,6 +826,27 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Role"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
             },
             "nullable": true
           }

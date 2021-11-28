@@ -9,3 +9,4 @@ export { RoleChangeDto } from './models/role-change-dto';
 export { Tag } from './models/tag';
 export { TokenDto } from './models/token-dto';
 export { User } from './models/user';
+export { UserDto } from './models/user-dto';
