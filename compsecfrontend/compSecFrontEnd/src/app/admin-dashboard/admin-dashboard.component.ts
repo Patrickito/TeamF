@@ -26,7 +26,8 @@ export class AdminDashboardComponent implements OnInit {
   RemoveCaff(e:any,img:CaffEntity){
     this.caffService.deleteCaffFile({id:img.id!!}).subscribe(_=>this.reloadCaffs())
   }
-  RemoveUser(e:any,user:UserDto){
+  removeUser(e:any,user:UserDto){
+    this.authService.deleteUser({id:user.id!!}).subscribe(_=>this.reloadUsers())
   }
   reloadUsers(){
     this.authService.getAllUsers().subscribe(_=>this.users=_)

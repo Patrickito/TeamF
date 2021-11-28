@@ -15,9 +15,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AuthService } from './authProxy/auth-service.service';
 import { AuthInterceptor } from './authProxy/auth.interceptor';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ImageBrowserComponent } from './image-browser/image-browser.component';
 import { MenuComponent } from './menu/menu.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { MenuComponent } from './menu/menu.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
+    RouterModule,
     AppRoutingModule,
     ApiModule.forRoot({rootUrl:"http://localhost:4200/api"})
   ],
