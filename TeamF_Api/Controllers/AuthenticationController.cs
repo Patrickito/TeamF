@@ -131,5 +131,16 @@ namespace TeamF_Api.Controllers
             await _service.DeleteUser(id);
             return NoContent();
         }
+
+        [Authorize(Policy = SecurityConstants.AdminPolicy)]
+        [HttpGet("{id}", Name = "GetAllRoles")]
+        [ProducesResponseType(typeof(ICollection<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetAllRoles()
+        {
+            var res = await _service.FetchAllRoles();
+            return Ok(res);
+        }
     }
 }

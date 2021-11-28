@@ -22,5 +22,7 @@ namespace TeamF_Api.Services.Interfaces
         Task UpdateRoles(string userName, ICollection<string> roles);
 
         Task<ICollection<UserDTO>> FetchAllUsers();
+
+        Task<ICollection<string>> FetchAllRoles();
     }
 }

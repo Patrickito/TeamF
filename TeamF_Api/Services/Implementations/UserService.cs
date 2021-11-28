@@ -41,6 +41,11 @@ namespace TeamF_Api.Services.Implementations
             await _userManager.DeleteAsync(user);
         }
 
+        public async Task<ICollection<string>> FetchAllRoles()
+        {
+            return await _context.Roles.Select(r => r.Name).ToListAsync();
+        }
+
         public async Task<ICollection<UserDTO>> FetchAllUsers()
         {
             return _userManager.Users
