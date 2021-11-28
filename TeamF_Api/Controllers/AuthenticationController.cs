@@ -109,5 +109,16 @@ namespace TeamF_Api.Controllers
 
             return NoContent();
         }
+
+        [Authorize(Policy = SecurityConstants.AdminPolicy)]
+        [HttpPost("users", Name = "GetAllUsers")]
+        [ProducesResponseType(typeof(ICollection<UserDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await _service.FetchAllUsers();
+            return Ok(result);
+        }
     }
 }

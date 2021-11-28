@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeamF_Api.DAL.Entity;
+using TeamF_Api.DTO;
 
 namespace TeamF_Api.Services.Interfaces
 {
@@ -19,5 +20,7 @@ namespace TeamF_Api.Services.Interfaces
         Task ChangePassword(string userName, string oldPassword, string newPassword);
 
         Task UpdateRoles(string userName, ICollection<string> roles);
+
+        Task<ICollection<UserDTO>> FetchAllUsers();
     }
 }

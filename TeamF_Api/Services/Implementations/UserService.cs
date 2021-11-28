@@ -8,6 +8,7 @@ using System.Security.Authentication;
 using System.Threading.Tasks;
 using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
+using TeamF_Api.DTO;
 using TeamF_Api.Security;
 using TeamF_Api.Security.Token;
 using TeamF_Api.Services.Exceptions;
@@ -38,6 +39,18 @@ namespace TeamF_Api.Services.Implementations
         {
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.DeleteAsync(user);
+        }
+
+        public async Task<ICollection<UserDTO>> FetchAllUsers()
+        {
+            return _userManager.Users
+                .Select(u => new UserDTO
+                {
+                    Id = u.Id.ToString(),
+                    Roles = u.Roles.Select(r => r.Name).ToList(),
+                    UserName = u.UserName
+                })
+                .ToList();
         }
 
         public async Task<User> FindUserByName(string name)
