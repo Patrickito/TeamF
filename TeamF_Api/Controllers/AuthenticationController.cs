@@ -133,7 +133,7 @@ namespace TeamF_Api.Controllers
         }
 
         [Authorize(Policy = SecurityConstants.AdminPolicy)]
-        [HttpGet("{id}", Name = "GetAllRoles")]
+        [HttpGet(Name = "GetAllRoles")]
         [ProducesResponseType(typeof(ICollection<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
