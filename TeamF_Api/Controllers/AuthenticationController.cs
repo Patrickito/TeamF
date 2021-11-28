@@ -120,5 +120,16 @@ namespace TeamF_Api.Controllers
             var result = await _service.FetchAllUsers();
             return Ok(result);
         }
+
+        [Authorize(Policy = SecurityConstants.AdminPolicy)]
+        [HttpDelete("{id}", Name = "DeleteUser")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            await _service.DeleteUser(id);
+            return NoContent();
+        }
     }
 }
