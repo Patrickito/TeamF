@@ -16,6 +16,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AuthService } from './authProxy/auth-service.service';
 import { AuthInterceptor } from './authProxy/auth.interceptor';
 import { Router } from '@angular/router';
+import { ImageBrowserComponent } from './image-browser/image-browser.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Router } from '@angular/router';
     PasswordChangeComponent,
     FileUploaderComponent,
     FileViewerComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ImageBrowserComponent
   ],
   imports: [
     BrowserModule,

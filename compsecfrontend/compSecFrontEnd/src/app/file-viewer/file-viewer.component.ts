@@ -5,6 +5,7 @@ import { CaffService, CommentService } from '../api/services';
 import {Observable} from 'rxjs'
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-file-viewer',
@@ -21,11 +22,14 @@ export class FileViewerComponent implements OnInit {
   }
   comments:Comment[]=[]
 path:SafeUrl=""
-  constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient,private sanitizer:DomSanitizer) { }
+private caffId:number=0
+  constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient,private sanitizer:DomSanitizer, activeRoute:ActivatedRoute) {
+    this.caffId=activeRoute.snapshot.params["caffId"]
+  }
   getImage(imageUrl: string): Observable<Blob> {
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
-  createImageFromBlob(image: Blob) {
+  createImageFromBlob(image: Blob){
     let reader = new FileReader();
     reader.addEventListener("load", () => {
        this.path=this.sanitizer.bypassSecurityTrustUrl(reader.result!!.toString())
@@ -36,8 +40,9 @@ path:SafeUrl=""
     }
   }
   ngOnInit(): void {
-      this.caffService.getCaffFile({id:1}).subscribe(_=>console.log(_))
-      this.commentService.getCaffFileComment({id:1}).subscribe(_=>{this.comments=_; console.log(this.comments)})
+    
+      this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>console.log(_))
+      this.commentService.getCaffFileComment({id:this.caffId}).subscribe(_=>{this.comments=_; console.log(this.comments)})
       
       this.getImage("http://localhost:4200/api/api/Caff/imgfile/1").subscribe(_=>this.createImageFromBlob(_))
   }

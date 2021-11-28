@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
+import { ImageBrowserComponent } from './image-browser/image-browser.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { RegisterComponent } from './register/register.component';
@@ -13,11 +14,14 @@ component : LoginComponent},
 {path:'register',
 component: RegisterComponent},
 {path:'changePassword',component:PasswordChangeComponent},
+
 {path:'',redirectTo:'/login' ,pathMatch:'full' },
 {path:'fileupload',component:FileUploaderComponent},
-{path:'view',component:FileViewerComponent},
+{path:'details/:caffId',component:FileViewerComponent},
 {path:'admin',component:AdminDashboardComponent},
-{path:'**', redirectTo:'/login',pathMatch:'full'}
+{path:'browse',component:ImageBrowserComponent},
+{path:'**', redirectTo:'/login',pathMatch:'full'},
+
 ];
 
 @NgModule({

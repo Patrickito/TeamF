@@ -27,7 +27,7 @@ export class AdminDashboardComponent implements OnInit {
     
   }
   reloadCaffs(){
-    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_;})
+    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_;console.log(_)})
   }
 
 

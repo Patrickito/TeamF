@@ -10,6 +10,9 @@
 
 
     </div>
+    <ul class="list-group">
+      <li *ngFor="let comment of comments" class="list-group-item"><div>{{comment.user!!.userName}}</div> <div>{{comment.commentText}}</div></li>
+    </ul>
     <form (ngSubmit)="onSubmit()" #login="ngForm" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="name">Add Comment:</label>
