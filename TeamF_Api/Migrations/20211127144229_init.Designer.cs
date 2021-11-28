@@ -10,8 +10,8 @@ using TeamF_Api.DAL;
 namespace TeamF_Api.Migrations
 {
     [DbContext(typeof(CAFFShopDbContext))]
-    [Migration("20211123214141_Authentication")]
-    partial class Authentication
+    [Migration("20211127144229_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -165,6 +165,80 @@ namespace TeamF_Api.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.CaffEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("CaffEntity");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("CaffEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaffEntityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Img", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CaffId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Caption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaffId");
+
+                    b.ToTable("Img");
+                });
+
             modelBuilder.Entity("TeamF_Api.DAL.Entity.Role", b =>
                 {
                     b.Property<long>("Id")
@@ -192,6 +266,26 @@ namespace TeamF_Api.Migrations
                             Id = 2L,
                             Name = "Administrator"
                         });
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ImgId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TagName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImgId");
+
+                    b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("TeamF_Api.DAL.Entity.User", b =>
@@ -328,6 +422,70 @@ namespace TeamF_Api.Migrations
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.CaffEntity", b =>
+                {
+                    b.HasOne("TeamF_Api.DAL.Entity.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Comment", b =>
+                {
+                    b.HasOne("TeamF_Api.DAL.Entity.CaffEntity", "CaffEntity")
+                        .WithMany("Comments")
+                        .HasForeignKey("CaffEntityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("TeamF_Api.DAL.Entity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CaffEntity");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Img", b =>
+                {
+                    b.HasOne("TeamF_Api.DAL.Entity.CaffEntity", "Caff")
+                        .WithMany("Images")
+                        .HasForeignKey("CaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Caff");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Tag", b =>
+                {
+                    b.HasOne("TeamF_Api.DAL.Entity.Img", "Img")
+                        .WithMany("Tags")
+                        .HasForeignKey("ImgId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Img");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.CaffEntity", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("TeamF_Api.DAL.Entity.Img", b =>
+                {
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

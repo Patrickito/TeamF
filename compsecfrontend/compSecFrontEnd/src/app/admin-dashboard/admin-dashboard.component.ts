@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CaffEntity } from '../api/models';
-import { CaffService } from '../api/services';
+import { CaffEntity, RoleChangeDto, User } from '../api/models';
+import { AuthenticationService, CaffService } from '../api/services';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,12 +9,27 @@ import { CaffService } from '../api/services';
 })
 export class AdminDashboardComponent implements OnInit {
   caffImgs:CaffEntity[]=[]
-  constructor(private caffService:CaffService) {
-    
+  users:User[]=[]
+  selectedUser:RoleChangeDto={
+
+  }
+  constructor(private caffService:CaffService,private authService:AuthenticationService) {
    }
 
   ngOnInit(): void {
-    this.caffService.getAllCaffFiles().subscribe(_=>this.caffImgs=_)
+    this.reloadCaffs()
   }
+  changeUser(){
+    this.authService.changeRoles({body:this.selectedUser})
+  }
+  RemoveCaff(e:any,img:CaffEntity){
+    this.caffService.deleteCaffFile({id:img.id!!}).subscribe(_=>this.reloadCaffs())
+    
+  }
+  reloadCaffs(){
+    this.caffService.getAllCaffFiles().subscribe(_=>{this.caffImgs=_;console.log(_)})
+  }
+
+
 
 }

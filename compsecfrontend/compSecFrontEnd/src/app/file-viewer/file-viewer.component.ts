@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import * as saveAs from 'file-saver';
 import { CaffEntity, Comment } from '../api/models';
 import { CaffService, CommentService } from '../api/services';
+import {Observable} from 'rxjs'
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-file-viewer',
@@ -10,22 +14,53 @@ import { CaffService, CommentService } from '../api/services';
 })
 export class FileViewerComponent implements OnInit {
   model:Comment={
+    caffEntityId:1,
     commentText:""
   }
-  model2:CaffEntity={
-    
+  comments:Comment[]=[]
+path:SafeUrl=""
+private caffId:number=0
+  constructor(private commentService:CommentService,private caffService:CaffService,private http:HttpClient,private sanitizer:DomSanitizer, activeRoute:ActivatedRoute) {
+    this.caffId=activeRoute.snapshot.params["caffId"]
   }
-path:string=""
-  constructor(private commentService:CommentService,private caffService:CaffService) { }
-
+  getImage(imageUrl: string): Observable<Blob> {
+    return this.http.get(imageUrl, { responseType: 'blob' });
+  }
+  createImageFromBlob(image: Blob){
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.path=this.sanitizer.bypassSecurityTrustUrl(reader.result!!.toString())
+    }, false);
+ 
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+  }
   ngOnInit(): void {
-    this.path="/assets/response.jpg"
+      var imgId=0
+      this.caffService.getAllCaffFiles().subscribe(_=>{imgId=_[this.caffId].images!![0].id!!;this.getImage("http://localhost:4200/api/api/Caff/imgfile/"+imgId).subscribe(_=>this.createImageFromBlob(_))})
+      //this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>console.log(_))
+      this.commentService.getCaffFileComment({id:this.caffId}).subscribe(_=>{this.comments=_; console.log(this.comments)})
+      
+      
   }
   onSubmit(){
-    this.commentService.addCaffFileComment({body:this.model})
+    this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.caffService.getImgFile({id: this.model2.id||0})
+    this.http.get("http://localhost:4200/api/api/Caff/CaffFile/"+this.caffId,{ responseType: 'blob' as 'json'}).subscribe((response: any) =>{
+      let dataType = response.type;
+      console.log(dataType)
+      let binaryData = [];
+      binaryData.push(response);
+      let downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+      let filename="temp.caff"
+      if (filename)
+          downloadLink.setAttribute('download', filename);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
   }
-
+)
+  }
 }

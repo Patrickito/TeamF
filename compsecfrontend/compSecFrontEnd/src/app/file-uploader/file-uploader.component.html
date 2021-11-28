@@ -2,8 +2,7 @@
     <label for="avatar">Choose a file to upload</label>
 
     <input type="file"
-       id="avatar" name="avatar"
-    (change)="onFileChanged($event)"
+    (change)="onFileChanged($event)" placeholder="Fájl feltöltés" accept=".caff"
     >
     <button type="submit" class="btn btn-success">
         Submit

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PasswordChangeDto } from '../api/models';
+import { AuthenticationService } from '../api/services';
 
 @Component({
   selector: 'app-password-change',
@@ -7,16 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordChangeComponent implements OnInit {
 
-  model={
-    oldpassword:"",
-    newpassword:""
+  model:PasswordChangeDto={
+    oldPassword:"",
+    newPassword:""
   }
   submitted = false;
-  constructor() { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
+    this.authService.changePassword({body:this.model}).subscribe(_=>console.log(_))
     console.log(this.model)
   }
 }

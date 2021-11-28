@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationDto } from '../api/models';
 import { AuthenticationService } from '../api/services';
+import { AuthService } from '../authProxy/auth-service.service';
 
 @Component({
   selector: 'app-register',
@@ -13,12 +14,12 @@ export class RegisterComponent implements OnInit {
     password:""
   }
   submitted = false;
-  constructor(private authService:AuthenticationService) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
-    this.authService.register({body:this.model}).subscribe()
+    this.authService.register(this.model).subscribe()
   }
 
 }

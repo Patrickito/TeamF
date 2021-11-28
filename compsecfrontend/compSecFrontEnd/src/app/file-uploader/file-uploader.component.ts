@@ -1,4 +1,6 @@
+import { HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-file-uploader',
@@ -7,12 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploaderComponent implements OnInit {
   file:any[]=[]
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
   }
   onFileChanged(e:any){
-    this.file=e.target.files
+    let files:FileList=e.target.files
+    if (files.length == 0) {
+      console.log("No file selected!");
+      return
+
+    }
+    let file = files;
+
+    this.uploadFile("http://localhost:4200/api/api/Caff/", file[0])
+      .subscribe()
+  }
+  uploadFile(url:string,file: File):Observable<Object>{
+    let formData:FormData=new FormData()
+    formData.append('1',file)
+    let params=new HttpParams();
+    return this.http.post(url,formData)
   }
   onSubmit(){
     console.log(this.file)

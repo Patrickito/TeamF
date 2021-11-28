@@ -167,7 +167,7 @@ export class CaffService extends BaseService {
    */
   getCaffFile$Response(params: {
     id: number;
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<CaffEntity>> {
 
     const rb = new RequestBuilder(this.rootUrl, CaffService.GetCaffFilePath, 'get');
     if (params) {
@@ -179,8 +179,8 @@ export class CaffService extends BaseService {
       accept: '*/*'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      map((r: HttpResponse<CaffEntity>) => {
+        return (r as HttpResponse<CaffEntity>).clone() as StrictHttpResponse<CaffEntity>;
       })
     );
   }
@@ -193,10 +193,10 @@ export class CaffService extends BaseService {
    */
   getCaffFile(params: {
     id: number;
-  }): Observable<void> {
+  }): Observable<CaffEntity> {
 
     return this.getCaffFile$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<CaffEntity>) => r.body as CaffEntity)
     );
   }
 

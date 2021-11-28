@@ -1,23 +1,19 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <ul>
-                <li>
-                    File 1 submit
-                </li>
-                <li>
-                    File 2
-                </li>
+            <ul class="list-group">
+                <li *ngFor="let img of caffImgs" class="list-group-item">
+                    {{img.id}}.caff <a class="btn btn-primary"(click)="RemoveCaff($event,img)">Delete File</a>
             </ul>
         </div>
         <div class="col-6">
-            <ul>
-                <li>
-                    User1
-                </li>
-                <li>
-                    User2
-                </li>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    User <a class="btn btn-primary">Delete User</a>
+                </li >
+                <li class="list-group-item">
+                    User  <a class="btn btn-primary">Delete User</a>
+                </li >
             </ul>
         </div>
     </div>

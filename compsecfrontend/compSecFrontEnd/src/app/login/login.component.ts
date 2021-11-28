@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationDto } from '../api/models';
 import { AuthenticationService } from '../api/services';
+import { AuthService } from '../authProxy/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,12 @@ export class LoginComponent implements OnInit {
     password:""
   }
   submitted = false;
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
-    this.authService.login({body:this.model}).subscribe()
+    this.authService.login(this.model).subscribe(a=>this.router.navigate(["/admin"]))
 
   }
 
