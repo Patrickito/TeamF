@@ -19,6 +19,9 @@ import { Router, RouterModule } from '@angular/router';
 import { ImageBrowserComponent } from './image-browser/image-browser.component';
 import { MenuComponent } from './menu/menu.component';
 import { CommonModule } from '@angular/common';
+import { IsAuthenticatedGuard } from './guard/is-authenticated.guard';
+import { IsNotAuthenticatedGuard } from './guard/is-not-authenticated.guard';
+import { AdminGuard } from './guard/admin.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { CommonModule } from '@angular/common';
       useClass: AuthInterceptor,
       multi: true,
       deps: [AuthService, Router],
-    },],
+    },IsAuthenticatedGuard,
+    IsNotAuthenticatedGuard,
+    AdminGuard,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
