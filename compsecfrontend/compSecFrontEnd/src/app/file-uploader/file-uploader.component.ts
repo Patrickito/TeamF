@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-uploader.component.css']
 })
 export class FileUploaderComponent implements OnInit {
-  file:any[]=[]
+  file:File|null=null
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -20,10 +20,7 @@ export class FileUploaderComponent implements OnInit {
       return
 
     }
-    let file = files;
-
-    this.uploadFile("http://localhost:4200/api/api/Caff/", file[0])
-      .subscribe()
+    this.file = files[0];
   }
   uploadFile(url:string,file: File):Observable<Object>{
     let formData:FormData=new FormData()
@@ -32,7 +29,8 @@ export class FileUploaderComponent implements OnInit {
     return this.http.post(url,formData)
   }
   onSubmit(){
-    console.log(this.file)
+    this.uploadFile("http://localhost:4200/api/api/Caff/", this.file!!)
+      .subscribe()
   }
 
 }

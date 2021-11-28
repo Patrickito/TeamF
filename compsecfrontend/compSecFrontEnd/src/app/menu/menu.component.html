@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" [ngClass]="currentRoute==='/browse'?'active':''" routerLink="/browse">Fáj böngészés</a>
+        <a class="nav-item nav-link"[ngClass]="currentRoute==='/changePassword'?'active':''" routerLink="/changePassword">Jelszó módosítás</a>
+        <a class="nav-item nav-link"[ngClass]="currentRoute==='/admin'?'active':''" routerLink="/admin">Admin felület</a>
+        <a class="nav-item nav-link"[ngClass]="currentRoute==='/fileupload'?'active':''" routerLink="/fileupload">Fájlfeltöltés</a>
+        <a class="nav-item nav-link"[ngClass]="currentRoute==='/login'?'active':''" routerLink="/login">Bejelentkezés</a>
+        <a class="nav-item nav-link"[ngClass]="currentRoute==='/register'?'active':''" routerLink="/register">Regisztráció</a>
+      </div>
+    </div>
+  </nav>
