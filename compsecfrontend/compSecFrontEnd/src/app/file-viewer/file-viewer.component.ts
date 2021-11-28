@@ -17,9 +17,6 @@ export class FileViewerComponent implements OnInit {
     caffEntityId:1,
     commentText:""
   }
-  model2:CaffEntity={
-    
-  }
   comments:Comment[]=[]
 path:SafeUrl=""
 private caffId:number=0
@@ -40,16 +37,19 @@ private caffId:number=0
     }
   }
   ngOnInit(): void {
-    
-      this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>console.log(_))
+      var imgId=0
+      this.caffService.getAllCaffFiles().subscribe(_=>{imgId=_[this.caffId].images!![0].id!!;this.getImage("http://localhost:4200/api/api/Caff/imgfile/"+imgId).subscribe(_=>this.createImageFromBlob(_))})
+      //this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>console.log(_))
       this.commentService.getCaffFileComment({id:this.caffId}).subscribe(_=>{this.comments=_; console.log(this.comments)})
       
-      this.getImage("http://localhost:4200/api/api/Caff/imgfile/1").subscribe(_=>this.createImageFromBlob(_))
+      
   }
   onSubmit(){
     this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.caffService.getImgFile({id: this.model2.id||1}).subscribe()
+    this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>{console.log(_);var name = 'myfile.caff';
+    let blob = new Blob([String(_)], {type: "text/plain"});
+    saveAs(blob, name);})
   }
 }
