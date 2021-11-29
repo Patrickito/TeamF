@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,12 @@ namespace TeamF_Api.Controllers
     {
         private readonly ICommentService _service;
 
-        public CommentController(ICommentService service)
+        private readonly ILogger<CaffController> _logger;
+
+        public CommentController(ICommentService service, ILogger<CaffController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         [Authorize]
@@ -40,7 +44,9 @@ namespace TeamF_Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> Delete(int id)
         {
+
             await _service.DeleteComment(User.Identity.Name, id);
+            _logger.LogInformation($"delete commend id: {id}");
             return NoContent();
         }
 
@@ -50,6 +56,7 @@ namespace TeamF_Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<Comment>> AddComment([FromBody] Comment newComment)
         {
+            _logger.LogDebug($"add comment: {newComment}");
             return await _service.AddComment(User.Identity.Name, newComment);
         }
 
