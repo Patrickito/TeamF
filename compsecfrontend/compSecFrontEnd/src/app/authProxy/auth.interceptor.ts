@@ -43,10 +43,11 @@ import { AuthService } from './auth-service.service';
                 this.authService.clearToken();
                 this.router.navigate(['/login']);
               }
-              if(error.url==="http://localhost:4200/api/api/Caff/")
+              if(error.url==="http://localhost:4200/api/api/Caff/"){
               if(error.status===400||error.status===500){
                 alert("A caff fájl formátuma nem megfelelő, kérlek válassz másikat.")
               }
+            }
             }
             return new Observable<any>()
           })

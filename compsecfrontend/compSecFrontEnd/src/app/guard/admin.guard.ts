@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
       this.router.navigate(["/changePassword"])
       return false;
     }
-
+    
     const decodedToken = jwt_decode<any>(token);
     if (!decodedToken) {
       this.router.navigate(["/changePassword"])

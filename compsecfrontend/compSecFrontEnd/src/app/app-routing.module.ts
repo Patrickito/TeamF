@@ -13,16 +13,17 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'login',
-component : LoginComponent, canActivate:[IsNotAuthenticatedGuard]},
+component : LoginComponent},
 {path:'register',
-component: RegisterComponent, canActivate:[IsNotAuthenticatedGuard]},
+component: RegisterComponent},
 {path:'changePassword',component:PasswordChangeComponent},
 
-{path:'',redirectTo:'/login' ,pathMatch:'full',},
+
 {path:'fileupload',component:FileUploaderComponent,canActivate:[IsAuthenticatedGuard]},
 {path:'details/:caffId',component:FileViewerComponent,canActivate:[IsAuthenticatedGuard]},
 {path:'admin',component:AdminDashboardComponent,canActivate:[IsAuthenticatedGuard,AdminGuard]},
 {path:'browse',component:ImageBrowserComponent,canActivate:[IsAuthenticatedGuard]},
+{path:'',redirectTo:'/login' ,pathMatch:'full',},
 {path:'**', redirectTo:'/login',pathMatch:'full'},
 
 ];
