@@ -126,9 +126,9 @@ namespace TeamF_Api.Controllers
                     return BadRequest();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return StatusCode(500, $"Internal server error: {ex}");
+                return StatusCode(500);
             }
             return Ok();
         }
