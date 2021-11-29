@@ -253,4 +253,93 @@ export class AuthenticationService extends BaseService {
     );
   }
 
+  /**
+   * Path part for operation deleteUser
+   */
+  static readonly DeleteUserPath = '/Authentication/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `deleteUser()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteUser$Response(params: {
+    id: string;
+  }): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthenticationService.DeleteUserPath, 'delete');
+    if (params) {
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `deleteUser$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteUser(params: {
+    id: string;
+  }): Observable<void> {
+
+    return this.deleteUser$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation getAllRoles
+   */
+  static readonly GetAllRolesPath = '/Authentication';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllRoles()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllRoles$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<string>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthenticationService.GetAllRolesPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<string>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `getAllRoles$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllRoles(params?: {
+  }): Observable<Array<string>> {
+
+    return this.getAllRoles$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<string>>) => r.body as Array<string>)
+    );
+  }
+
 }
