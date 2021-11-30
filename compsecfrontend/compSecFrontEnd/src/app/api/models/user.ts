@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Role } from './role';
 export interface User {
   accessFailedCount?: number;
   concurrencyStamp?: null | string;
@@ -14,7 +13,6 @@ export interface User {
   passwordHash?: null | string;
   phoneNumber?: null | string;
   phoneNumberConfirmed?: boolean;
-  roles?: null | Array<Role>;
   securityStamp?: null | string;
   twoFactorEnabled?: boolean;
   userName?: null | string;

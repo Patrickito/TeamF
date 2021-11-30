@@ -4,7 +4,6 @@ export { Comment } from './models/comment';
 export { Img } from './models/img';
 export { PasswordChangeDto } from './models/password-change-dto';
 export { ProblemDetails } from './models/problem-details';
-export { Role } from './models/role';
 export { RoleChangeDto } from './models/role-change-dto';
 export { Tag } from './models/tag';
 export { TokenDto } from './models/token-dto';

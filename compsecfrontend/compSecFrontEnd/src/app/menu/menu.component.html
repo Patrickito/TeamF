@@ -9,8 +9,6 @@
         <a class="nav-item nav-link"[ngClass]="currentRoute==='/changePassword'?'active':''" routerLink="/changePassword">Jelszó módosítás</a>
         <a class="nav-item nav-link" *ngIf="isAdmin"[ngClass]="currentRoute==='/admin'?'active':''" routerLink="/admin">Admin felület</a>
         <a class="nav-item nav-link"[ngClass]="currentRoute==='/fileupload'?'active':''" routerLink="/fileupload">Fájlfeltöltés</a>
-        <a class="nav-item nav-link"*ngIf="!isLoggedIn" [ngClass]="currentRoute==='/login'?'active':''" routerLink="/login">Bejelentkezés</a>
-        <a class="nav-item nav-link"*ngIf="!isLoggedIn" [ngClass]="currentRoute==='/register'?'active':''" routerLink="/register">Regisztráció</a>
-      </div>
+       </div>
     </div>
   </nav>
