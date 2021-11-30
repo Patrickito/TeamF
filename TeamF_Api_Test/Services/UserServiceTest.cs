@@ -4,9 +4,12 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
+using System.Threading.Tasks;
 using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
+using TeamF_Api.Security;
 using TeamF_Api.Security.Token;
 using TeamF_Api.Services.Implementations;
 using TeamF_Api.Services.Interfaces;
@@ -64,12 +67,7 @@ namespace TeamF_Api_Test.Services
 
             var user = new User
             {
-                UserName = newName,
-                Roles = new List<Role>
-                {
-                    new Role { Id = 1L, Name = "BaseUser" },
-                    new Role { Id = 2L, Name = "Administrator" }
-                }
+                UserName = newName
             };
 
             _userManager.Verify(um => um.CreateAsync(It.Is<User>(u => u.Id.Equals(user.Id)), It.Is<string>(p => p.Equals("testUser"))), Times.Once());
@@ -80,12 +78,7 @@ namespace TeamF_Api_Test.Services
         {
             var user = new User
             {
-                UserName = "newName",
-                Roles = new List<Role>
-                {
-                    new Role { Id = 1L, Name = "BaseUser" },
-                    new Role { Id = 2L, Name = "Administrator" }
-                }
+                UserName = "newName"
             };
             _userManager.Setup(u => u.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
 
@@ -100,12 +93,7 @@ namespace TeamF_Api_Test.Services
         {
             var user = new User
             {
-                UserName = "newName",
-                Roles = new List<Role>
-                {
-                    new Role { Id = 1L, Name = "BaseUser" },
-                    new Role { Id = 2L, Name = "Administrator" }
-                }
+                UserName = "newName"
             };
             _userManager.Setup(u => u.FindByIdAsync(It.IsAny<string>())).ReturnsAsync(user);
 
@@ -122,8 +110,7 @@ namespace TeamF_Api_Test.Services
             {
                 Id = Guid.NewGuid(),
                 UserName = "name",
-                NormalizedUserName = "NAME",
-                Roles = new List<Role>()
+                NormalizedUserName = "NAME"
             };
             _userManager.Setup(u => u.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
 
@@ -132,6 +119,106 @@ namespace TeamF_Api_Test.Services
             Assert.Equal(user.Id.ToString(), res.Id.ToString());
             Assert.Equal("name", res.UserName);
             _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("name"))));
+        }
+
+        [Fact]
+        public async void TestAddRole()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME"
+            };
+            _userManager.Setup(um => um.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+            _userManager.Setup(um => um.GetRolesAsync(It.IsAny<User>())).ReturnsAsync(new List<string> { SecurityConstants.BaseUserRole });
+
+            var roles = new List<string> { SecurityConstants.BaseUserRole, SecurityConstants.AdminRole };
+            await _service.UpdateRoles("name", roles);
+
+            _userManager.Verify(um => um.AddToRoleAsync(It.Is<User>(n => n.Equals(user)), It.Is<string>(r => r.Equals(SecurityConstants.AdminRole))), Times.Once());
+            _userManager.Verify(um => um.RemoveFromRoleAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Never());
+        }
+
+        [Fact]
+        public async void TestRemoveRole()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME"
+            };
+            _userManager.Setup(um => um.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+            _userManager.Setup(um => um.GetRolesAsync(It.IsAny<User>())).ReturnsAsync(new List<string> { SecurityConstants.BaseUserRole, SecurityConstants.AdminRole });
+
+            var roles = new List<string> { SecurityConstants.BaseUserRole };
+            await _service.UpdateRoles("name", roles);
+
+            _userManager.Verify(um => um.RemoveFromRoleAsync(It.Is<User>(n => n.Equals(user)), It.Is<string>(r => r.Equals(SecurityConstants.AdminRole))), Times.Once());
+            _userManager.Verify(um => um.AddToRoleAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Never());
+        }
+
+        [Fact]
+        public async void TestLogin()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME"
+            };
+            _userManager.Setup(um => um.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+            _userManager.Setup(um => um.CheckPasswordAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(true);
+            _userManager.Setup(um => um.GetRolesAsync(It.IsAny<User>())).ReturnsAsync(new List<string> { SecurityConstants.BaseUserRole });
+            _tokenGenerator.Setup(tg => tg.GenerateToken(It.IsAny<TokenData>())).Returns("token");
+
+            var token = await _service.Login("name", "password");
+
+            Assert.Equal("token", token);
+            _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("name"))), Times.Once());
+            _userManager.Verify(um => um.CheckPasswordAsync(It.Is<User>(u => u.Equals(user)), It.Is<string>(n => n.Equals("password"))), Times.Once());
+            _userManager.Verify(um => um.GetRolesAsync(It.Is<User>(u => u.Equals(user))), Times.Once());
+            _tokenGenerator.Verify(tg => tg.GenerateToken(It.IsAny<TokenData>()), Times.Once());
+        }
+
+        [Fact]
+        public async void TestLoginUserNotFound()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME"
+            };
+            _userManager.Setup(um => um.FindByNameAsync(It.IsAny<string>())).Returns(Task.FromResult<User>(null));
+
+            await Assert.ThrowsAsync<AuthenticationException>(() => _service.Login("name", "password"));
+
+            _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("name"))), Times.Once());
+            _userManager.Verify(um => um.CheckPasswordAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Never());
+            _userManager.Verify(um => um.GetRolesAsync(It.IsAny<User>()), Times.Never());
+            _tokenGenerator.Verify(tg => tg.GenerateToken(It.IsAny<TokenData>()), Times.Never());
+        }
+
+        [Fact]
+        public async void TestLoginIncorrectPassword()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME"
+            };
+            _userManager.Setup(um => um.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+            _userManager.Setup(um => um.CheckPasswordAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(false);
+
+            await Assert.ThrowsAsync<AuthenticationException>(() => _service.Login("name", "password"));
+
+            _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("name"))), Times.Once());
+            _userManager.Verify(um => um.CheckPasswordAsync(It.Is<User>(u => u.Equals(user)), It.Is<string>(n => n.Equals("password"))), Times.Once());
+            _userManager.Verify(um => um.GetRolesAsync(It.IsAny<User>()), Times.Never());
+            _tokenGenerator.Verify(tg => tg.GenerateToken(It.IsAny<TokenData>()), Times.Never());
         }
     }
 }
