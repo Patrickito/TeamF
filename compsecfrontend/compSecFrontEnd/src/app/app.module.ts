@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { IsAuthenticatedGuard } from './guard/is-authenticated.guard';
 import { IsNotAuthenticatedGuard } from './guard/is-not-authenticated.guard';
 import { AdminGuard } from './guard/admin.guard';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AdminGuard } from './guard/admin.guard';
     FileViewerComponent,
     AdminDashboardComponent,
     ImageBrowserComponent,
-    MenuComponent
+    MenuComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

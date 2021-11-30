@@ -8,6 +8,7 @@ import { IsAuthenticatedGuard } from './guard/is-authenticated.guard';
 import { IsNotAuthenticatedGuard } from './guard/is-not-authenticated.guard';
 import { ImageBrowserComponent } from './image-browser/image-browser.component';
 import { LoginComponent } from './login/login.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -16,15 +17,16 @@ const routes: Routes = [
 component : LoginComponent},
 {path:'register',
 component: RegisterComponent},
-{path:'changePassword',component:PasswordChangeComponent},
+{path:'changePassword',component:PasswordChangeComponent, canActivate:[IsAuthenticatedGuard]},
 
 
 {path:'fileupload',component:FileUploaderComponent,canActivate:[IsAuthenticatedGuard]},
 {path:'details/:caffId',component:FileViewerComponent,canActivate:[IsAuthenticatedGuard]},
 {path:'admin',component:AdminDashboardComponent,canActivate:[IsAuthenticatedGuard,AdminGuard]},
 {path:'browse',component:ImageBrowserComponent,canActivate:[IsAuthenticatedGuard]},
+{path:'404',component:NotfoundComponent},
 {path:'',redirectTo:'/login' ,pathMatch:'full',},
-{path:'**', redirectTo:'/login',pathMatch:'full'},
+{path:'**', redirectTo:'/404',pathMatch:'full'},
 
 ];
 
