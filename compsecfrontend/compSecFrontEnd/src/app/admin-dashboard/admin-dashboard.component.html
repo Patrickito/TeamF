@@ -18,7 +18,7 @@
                             </div>
                             <ul class="col-6 list-group-item">
                                 <li *ngFor="let role of user.roles" class="list-group-item">
-                                    {{role}} <a class="btn btn-primary" (click)="removeRole($event,user,role)">Jog törlése</a>
+                                    {{role}} <a class="btn btn-primary" *ngIf="user.userName!!.toUpperCase()!=currentUser.toUpperCase()" (click)="removeRole($event,user,role)">Jog törlése</a>
                                 </li>
                                 <li *ngFor="let role of allRoles " class="list-group-item">
                                     <a class="btn btn-primary"*ngIf="!user.roles!!.includes(role)" (click)="addRole($event,user,role)">{{role}} jog adása</a>
