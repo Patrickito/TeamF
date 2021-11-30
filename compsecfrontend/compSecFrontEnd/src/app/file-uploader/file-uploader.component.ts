@@ -23,7 +23,7 @@ export class FileUploaderComponent implements OnInit {
   uploadFile(url:string,file: File){
     let formData:FormData=new FormData()
     formData.append('1',file)
-    this.http.post(url,formData).subscribe()
+    this.http.post(url,formData).subscribe(_=>alert("Sikeres fájlfeltöltés"))
   }
   onSubmit(){
     this.uploadFile("http://localhost:4200/api/api/Caff/", this.file!!)

@@ -4,6 +4,7 @@ import { CaffEntity } from '../api/models';
 import { CaffService } from '../api/services';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image-browser',
@@ -13,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class ImageBrowserComponent implements OnInit {
   searchParam: string = "Beautiful scenery"
   caffImgs: { caffEntity: CaffEntity, img: SafeUrl }[] = []
-  constructor(private caffService: CaffService, private http: HttpClient, private sanitizer: DomSanitizer) { }
+  constructor(private caffService: CaffService, private http: HttpClient, private sanitizer: DomSanitizer,private readonly router:Router) { }
   getImage(imageUrl: string): Observable<Blob> {
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
@@ -53,5 +54,9 @@ export class ImageBrowserComponent implements OnInit {
       }
     })
   }
+  NavigateDetails(e:any,caffImg:CaffEntity){
+    this.router.navigate(["/details/"+this.caffImgs.findIndex(caff=>caff.caffEntity.id===caffImg.id)])
+  }
+  
 
 }

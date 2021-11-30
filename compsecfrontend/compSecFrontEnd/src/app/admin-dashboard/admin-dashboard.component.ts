@@ -49,7 +49,7 @@ export class AdminDashboardComponent implements OnInit {
       }
     }
     let roleDto:RoleChangeDto ={roles:newRole,userName:user.userName!!}
-    this.authService.changeRoles({body:roleDto}).subscribe()
+    this.authService.changeRoles({body:roleDto}).subscribe(_=> this.reloadUsers())
     
 
   }
