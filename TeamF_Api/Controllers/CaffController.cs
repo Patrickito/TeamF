@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,12 +23,14 @@ namespace TeamF_Api.Controllers
     {
 
         private readonly UserManager<User> _userManager;
+        private readonly ILogger<CaffController> _logger;
         private readonly ICaffService _service;
 
-        public CaffController(UserManager<User> userManager, ICaffService service)
+        public CaffController(UserManager<User> userManager, ICaffService service, ILogger<CaffController> logger)
         {
             _userManager = userManager;
             _service = service;
+            _logger = logger;
         }
 
         [HttpPost(Name = "UploadCaffFIle")]
@@ -123,12 +126,14 @@ namespace TeamF_Api.Controllers
                 }
                 else
                 {
+                    _logger.LogDebug($"length = 0");
                     return BadRequest();
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return StatusCode(500, $"Internal server error: {ex}");
+                _logger.LogError($"Upload file error: {e}");
+                return StatusCode(500);
             }
             return Ok();
         }
@@ -141,6 +146,7 @@ namespace TeamF_Api.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             await _service.DeleteCaffAsync(id);
+            _logger.LogInformation($"remove caff id: {id}");
             return NoContent();
         }
 

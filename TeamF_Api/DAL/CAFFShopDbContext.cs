@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TeamF_Api.DAL.Entity;
+using TeamF_Api.Security;
 
 namespace TeamF_Api.DAL
 {
-    public class CAFFShopDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+    public class CAFFShopDbContext : IdentityDbContext<User, Role, Guid>
     {
         public CAFFShopDbContext(DbContextOptions options) : base(options)
         {
@@ -17,24 +18,13 @@ namespace TeamF_Api.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasKey(u => u.Id);
+            base.OnModelCreating(modelBuilder);
 
-                entity.HasIndex(u => u.UserName).IsUnique();
-
-                entity.HasMany(u => u.Roles)
-                    .WithMany(r => r.Users)
-                    .UsingEntity(e => e.ToTable("UserRole"));
-            });
-
-            modelBuilder.Entity<Role>(entity =>
-            {
-
-                entity.HasData(
-                    new Role { Id = 1, Name = "BaseUser" },
-                    new Role { Id = 2, Name = "Administrator" });
-            });
+            modelBuilder.Entity<Role>()
+                .HasData(
+                    new Role { Id = Guid.NewGuid(), Name = SecurityConstants.BaseUserRole, NormalizedName = SecurityConstants.BaseUserRole.ToUpper() },
+                    new Role { Id = Guid.NewGuid(), Name = SecurityConstants.AdminRole, NormalizedName = SecurityConstants.AdminRole.ToUpper() }
+                    );
 
             modelBuilder.Entity<Comment>()
                .HasOne<CaffEntity>(s => s.CaffEntity)
@@ -42,12 +32,10 @@ namespace TeamF_Api.DAL
                .HasForeignKey(u => u.CaffEntityId)
                .OnDelete(DeleteBehavior.Restrict);
 
-            base.OnModelCreating(modelBuilder);
         }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<CaffEntity> CaffEntity { get; set; }
         public DbSet<Img> Img { get; set; }
         public DbSet<Tag> Tag { get; set; }
-        public DbSet<Role> Roles { get; set; }
     }
 }

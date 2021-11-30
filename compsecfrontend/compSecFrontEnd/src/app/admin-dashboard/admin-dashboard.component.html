@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -8,12 +9,25 @@
         </div>
         <div class="col-6">
             <ul class="list-group">
-                <li class="list-group-item">
-                    User <a class="btn btn-primary">Delete User</a>
-                </li >
-                <li class="list-group-item">
-                    User  <a class="btn btn-primary">Delete User</a>
-                </li >
+                <li *ngFor="let user of users" class="list-group-item ">
+                    <div class="container" >
+                        <div class="row">
+                            <div class="col-3">{{user.userName}}</div>
+                            <div class="col-3">
+                                <a class="btn btn-primary " *ngIf="user.userName!!.toUpperCase()!=currentUser.toUpperCase()" style="max-height: 30pt;" (click)="removeUser($event,user)">Törlés</a>
+                            </div>
+                            <ul class="col-6 list-group-item">
+                                <li *ngFor="let role of user.roles" class="list-group-item">
+                                    {{role}} <a class="btn btn-primary" *ngIf="user.userName!!.toUpperCase()!=currentUser.toUpperCase()" (click)="removeRole($event,user,role)">Jog törlése</a>
+                                </li>
+                                <li *ngFor="let role of allRoles " class="list-group-item">
+                                    <a class="btn btn-primary"*ngIf="!user.roles!!.includes(role)" (click)="addRole($event,user,role)">{{role}} jog adása</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    
             </ul>
         </div>
     </div>

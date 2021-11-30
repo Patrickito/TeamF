@@ -24,7 +24,7 @@
         <input
           type="password"
           ngModel
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+          pattern="/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/$"
           class="form-control"
           id="password"
           [(ngModel)]="model.password"
@@ -34,8 +34,10 @@
         <div class="invalid-feedback">The password must be atleast 8 character long</div>
       </div>
       <button type="submit" class="btn btn-success">
-        Submit
+        Register
       </button>
+      <a class="btn btn-primary" routerLink="/login">Already registered? Login</a>
+      
     </form>
   </div>
   

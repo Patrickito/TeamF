@@ -17,6 +17,7 @@ export class FileViewerComponent implements OnInit {
     caffEntityId:1,
     commentText:""
   }
+  fileName=""
   comments:Comment[]=[]
 path:SafeUrl=""
 private caffId:number=0
@@ -36,10 +37,10 @@ private caffId:number=0
        reader.readAsDataURL(image);
     }
   }
+  caffEntity:CaffEntity={}
   ngOnInit(): void {
       var imgId=0
-      this.caffService.getAllCaffFiles().subscribe(_=>{imgId=_[this.caffId].images!![0].id!!;this.getImage("http://localhost:4200/api/api/Caff/imgfile/"+imgId).subscribe(_=>this.createImageFromBlob(_))})
-      //this.caffService.getCaffFile({id:this.caffId}).subscribe(_=>console.log(_))
+      this.caffService.getAllCaffFiles().subscribe(_=>{this.caffEntity=_[this.caffId];this.fileName=_[this.caffId].images!![0].caption!!;imgId=_[this.caffId].images!![0].id!!;this.getImage("http://localhost:4200/api/api/Caff/imgfile/"+imgId).subscribe(_=>this.createImageFromBlob(_))})
       this.commentService.getCaffFileComment({id:this.caffId}).subscribe(_=>{this.comments=_; console.log(this.comments)})
       
       
@@ -48,9 +49,8 @@ private caffId:number=0
     this.commentService.addCaffFileComment({body:this.model}).subscribe()
   }
   downloadCaff(){
-    this.http.get("http://localhost:4200/api/api/Caff/CaffFile/"+this.caffId,{ responseType: 'blob' as 'json'}).subscribe((response: any) =>{
+    this.http.get("http://localhost:4200/api/api/Caff/CaffFile/"+this.caffEntity.id,{ responseType: 'blob' as 'json'}).subscribe((response: any) =>{
       let dataType = response.type;
-      console.log(dataType)
       let binaryData = [];
       binaryData.push(response);
       let downloadLink = document.createElement('a');

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamF_Api.DAL;
 
 namespace TeamF_Api.Migrations
 {
     [DbContext(typeof(CAFFShopDbContext))]
-    partial class CAFFShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211128205652_AuthenticationRework")]
+    partial class AuthenticationRework
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,15 +226,15 @@ namespace TeamF_Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4c338375-f85d-4759-9d66-404ccda09b0f"),
-                            ConcurrencyStamp = "133c359e-c2a2-47b5-bbc7-bbffabded5fe",
+                            Id = new Guid("6aa63b5e-d3e2-483f-8b7f-09dd9f851684"),
+                            ConcurrencyStamp = "9a23bab0-ad7d-4320-9b01-8bd09bf5db86",
                             Name = "BaseUser",
                             NormalizedName = "BASEUSER"
                         },
                         new
                         {
-                            Id = new Guid("e7426c16-113b-4fe0-b8af-e6492500f4a6"),
-                            ConcurrencyStamp = "4722abeb-1b32-438c-b5b3-d2957312c3f8",
+                            Id = new Guid("f0614ed0-52e1-4d2d-982d-7ce0ca2a30e4"),
+                            ConcurrencyStamp = "e299fce3-32e0-4d0e-b35e-56d1cc63e737",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

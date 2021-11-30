@@ -48,12 +48,12 @@ namespace TeamF_Api
                     .UseSqlServer(Configuration.GetConnectionString("SQLServer"))
             ); ;
 
-            services.AddIdentityCore<User>(o =>
+            services.AddIdentity<User, Role>(o =>
             {
-                o.Password.RequireDigit = false;
-                o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequireUppercase = false;
-                o.Password.RequiredLength = 0;
+                o.Password.RequireDigit = true;
+                o.Password.RequireNonAlphanumeric = true;
+                o.Password.RequireUppercase = true;
+                o.Password.RequiredLength = 8;
                 o.User.RequireUniqueEmail = false;
             }).AddEntityFrameworkStores<CAFFShopDbContext>();
 

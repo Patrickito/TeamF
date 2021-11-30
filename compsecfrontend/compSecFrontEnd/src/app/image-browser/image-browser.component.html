@@ -1,8 +1,13 @@
+<app-menu></app-menu>
 <div class="container">
+    <p>Keresési paraméter:
+    </p>
+    <input type="text" [(ngModel)]="searchParam"/>
+    <a class="btn btn-primary" (click)="CreateCaffs()">Keresés</a>
     <div class="row">
         <div *ngFor="let caffImg of caffImgs" class="col-12 col-sm-4">
             <p>
-              <a routerLink="/details/{{caffImg.caffEntity.id}}">{{caffImg.caffEntity.images!![0]!!.caption}}</a>
+              <a (click)="NavigateDetails($event, caffImg.caffEntity)">{{caffImg.caffEntity.images!![0]!!.caption}}</a>
               <img [src]="caffImg.img"/>
             </p>
         </div>

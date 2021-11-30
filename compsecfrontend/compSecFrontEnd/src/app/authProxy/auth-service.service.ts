@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthenticationDto, TokenDto } from '../api/models';
 import { AuthenticationService } from '../api/services';
-
+import jwt_decode from "jwt-decode"
 const TOKEN_KEY = 'AUTH_TOKENCSHW';
 
 @Injectable()
@@ -27,5 +27,17 @@ export class AuthService {
 
   public clearToken(): void {
     localStorage.removeItem(TOKEN_KEY);
+  }
+  public getUserName():string|null{
+    const token = this.getToken();
+    if (token === null) {
+      return "";
+    }
+    
+    const decodedToken = jwt_decode<any>(token);
+    if (!decodedToken) {
+      return ""
+    }
+    return decodedToken.unique_name;
   }
 }

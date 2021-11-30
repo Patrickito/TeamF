@@ -41,16 +41,28 @@ namespace TeamF_Api.Services.Implementations
             await _userManager.DeleteAsync(user);
         }
 
+        public async Task<ICollection<string>> FetchAllRoles()
+        {
+            return await _context.Roles.Select(r => r.Name).ToListAsync();
+        }
+
         public async Task<ICollection<UserDTO>> FetchAllUsers()
         {
-            return _userManager.Users
-                .Select(u => new UserDTO
+            var users = await _userManager.Users.ToListAsync();
+            var res = new List<UserDTO>(users.Count);
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                res.Add(new UserDTO
                 {
-                    Id = u.Id.ToString(),
-                    Roles = u.Roles.Select(r => r.Name).ToList(),
-                    UserName = u.UserName
-                })
-                .ToList();
+                    Id = user.Id.ToString(),
+                    UserName = user.UserName,
+                    Roles = roles
+                });
+            }
+
+            return res;
         }
 
         public async Task<User> FindUserByName(string name)
@@ -71,39 +83,52 @@ namespace TeamF_Api.Services.Implementations
                 throw new AuthenticationException($"User not found or incorrect password for user: {userName}");
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
             var tokenData = new TokenData
             {
                 UserName = user.UserName,
-                Roles = user.Roles.Select(u => u.Name).ToList()
+                Roles = roles
             };
             return _tokenGenerator.GenerateToken(tokenData);
         }
 
         public async Task RegisterUser(string userName, string password)
         {
-            var baseUser = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.BaseUserRole));
-            var admin = _context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole));
-
             var isFirstUser = !_context.Users.Any();
-            var userRoles = isFirstUser ? new List<Role> { baseUser, admin } : new List<Role> { baseUser };
 
             var user = new User
             {
-                UserName = userName,
-                Roles = userRoles
+                UserName = userName
             };
 
             var result = await _userManager.CreateAsync(user, password);
+
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, SecurityConstants.BaseUserRole);
+                if (isFirstUser)
+                {
+                    await _userManager.AddToRoleAsync(user, SecurityConstants.AdminRole);
+                }
+            }
         }
 
         public async Task UpdateRoles(string userName, ICollection<string> roles)
         {
             var user = await _userManager.FindByNameAsync(userName);
-            user.Roles = roles.Select(r => _context.Roles.FirstOrDefault(role => role.Name.Equals(r)))
-                .Where(r => r != null)
-                .ToList();
+            var currentRoles = await _userManager.GetRolesAsync(user);
 
-            await _userManager.UpdateAsync(user);
+            var rolesToAdd = roles.Where(r => !currentRoles.Contains(r));
+            var rolesToRemove = currentRoles.Where(r => !roles.Contains(r));
+
+            foreach (var role in rolesToAdd)
+            {
+                await _userManager.AddToRoleAsync(user, role);
+            }
+            foreach (var role in rolesToRemove)
+            {
+                await _userManager.RemoveFromRoleAsync(user, role);
+            }
         }
     }
 }
