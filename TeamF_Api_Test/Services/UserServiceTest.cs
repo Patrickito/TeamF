@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TeamF_Api.DAL;
 using TeamF_Api.DAL.Entity;
@@ -71,7 +72,66 @@ namespace TeamF_Api_Test.Services
                 }
             };
 
-            _userManager.Verify(um => um.CreateAsync(user, newPassword), Times.Once());
+            _userManager.Verify(um => um.CreateAsync(It.Is<User>(u => u.Id.Equals(user.Id)), It.Is<string>(p => p.Equals("testUser"))), Times.Once());
+        }
+
+        [Fact]
+        public async void TestChaingePassword()
+        {
+            var user = new User
+            {
+                UserName = "newName",
+                Roles = new List<Role>
+                {
+                    new Role { Id = 1L, Name = "BaseUser" },
+                    new Role { Id = 2L, Name = "Administrator" }
+                }
+            };
+            _userManager.Setup(u => u.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+
+            await _service.ChangePassword("newName", "oldPassword", "newPassword");
+
+            _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("newName"))), Times.Once());
+            _userManager.Verify(um => um.ChangePasswordAsync(It.Is<User>(n => n.Equals(user)), It.Is<string>(p => p.Equals("oldPassword")), It.Is<string>(p => p.Equals("newPassword"))), Times.Once());
+        }
+
+        [Fact]
+        public async void TestDeleteUser()
+        {
+            var user = new User
+            {
+                UserName = "newName",
+                Roles = new List<Role>
+                {
+                    new Role { Id = 1L, Name = "BaseUser" },
+                    new Role { Id = 2L, Name = "Administrator" }
+                }
+            };
+            _userManager.Setup(u => u.FindByIdAsync(It.IsAny<string>())).ReturnsAsync(user);
+
+            await _service.DeleteUser("test")
+                ;
+            _userManager.Verify(um => um.FindByIdAsync(It.Is<string>(n => n.Equals("test"))), Times.Once());
+            _userManager.Verify(um => um.DeleteAsync(It.Is<User>(n => n.Equals(user))), Times.Once());
+        }
+
+        [Fact]
+        public async void TestFindUserByName()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "name",
+                NormalizedUserName = "NAME",
+                Roles = new List<Role>()
+            };
+            _userManager.Setup(u => u.FindByNameAsync(It.IsAny<string>())).ReturnsAsync(user);
+
+            var res = await _service.FindUserByName("name");
+
+            Assert.Equal(user.Id.ToString(), res.Id.ToString());
+            Assert.Equal("name", res.UserName);
+            _userManager.Verify(um => um.FindByNameAsync(It.Is<string>(n => n.Equals("name"))));
         }
     }
 }

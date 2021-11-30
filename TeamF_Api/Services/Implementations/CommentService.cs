@@ -24,10 +24,11 @@ namespace TeamF_Api.Services.Implementations
 
         public async Task<Comment> AddComment(string username, Comment comment)
         {
-            comment.Id = 0;
-            comment.UserId = (await _userManager.FindByNameAsync(username)).Id;
-            if (comment.UserId == null)
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
                 return null;
+            comment.Id = 0;
+            comment.UserId = user.Id;
             var result = _context.Comment.Add(comment);
             _context.SaveChanges();
             return result.Entity;
@@ -36,8 +37,8 @@ namespace TeamF_Api.Services.Implementations
 
         public async Task DeleteComment(string username, int commentId)
         {
-            bool isAdmin = (await _userManager.FindByNameAsync(username))
-                .Roles.Contains(_context.Roles.FirstOrDefault(r => r.Name.Equals(SecurityConstants.AdminRole)));
+            User user = await _userManager.FindByNameAsync(username);
+            bool isAdmin = await _userManager.IsInRoleAsync(user, SecurityConstants.AdminRole);
             if (isAdmin)
             {
                 var result = await _context.Comment
