@@ -21,7 +21,20 @@ namespace TeamF_Api_Test.Controller
         public CaffControllerTest()
         {
             _service = new Mock<ICaffService>();
-            _controller = new CaffController(new Mock<UserManager<User>>().Object, _service.Object, NullLogger<CaffController>.Instance);
+            _controller = new CaffController(MockUserManager(new List<User>()).Object, _service.Object, NullLogger<CaffController>.Instance);
+        }
+        private Mock<UserManager<User>> MockUserManager(List<User> ls)
+        {
+            var store = new Mock<IUserStore<User>>();
+            var mgr = new Mock<UserManager<User>>(store.Object, null, null, null, null, null, null, null, null);
+            mgr.Object.UserValidators.Add(new UserValidator<User>());
+            mgr.Object.PasswordValidators.Add(new PasswordValidator<User>());
+
+            mgr.Setup(x => x.DeleteAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Success);
+            mgr.Setup(x => x.CreateAsync(It.IsAny<User>(), It.IsAny<string>())).ReturnsAsync(IdentityResult.Success).Callback<User, string>((x, y) => ls.Add(x));
+            mgr.Setup(x => x.UpdateAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Success);
+
+            return mgr;
         }
 
         [Fact]
