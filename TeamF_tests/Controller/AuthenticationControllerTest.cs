@@ -13,7 +13,7 @@ using TeamF_Api.Services.Exceptions;
 using TeamF_Api.Services.Interfaces;
 using Xunit;
 
-namespace TeamF_Api_Test.Services
+namespace TeamF_Api_Test.Controller
 {
     public class AuthenticationControllerTest
     {
